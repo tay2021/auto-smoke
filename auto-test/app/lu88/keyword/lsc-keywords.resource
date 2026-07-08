@@ -44,8 +44,6 @@ Assert Detail Of A Betting Transaction In Detail LSC Page
     ${expected_tien_cuoc}    Get From Dictionary    ${item}    stake
     ${expected_thang_thua}    Get From Dictionary    ${item}    winlost
     ${expected_thuong}    Get From Dictionary    ${item}    commission    default=0
-    
-        
 
     ${expected_tien_cuoc}    Format With K From Original    ${expected_tien_cuoc}
     ${expected_thang_thua}    Format With K From Original    ${expected_thang_thua}
@@ -65,6 +63,3 @@ Assert Detail Of A Betting Transaction In Detail LSC Page
     Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
     Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
     Should Be True    '${expected_thuong}'=='${actual_thuong}'
-
-
-    
