@@ -46,6 +46,9 @@ Assert Detail Of A Betting Transaction In Detail LSC Page
         ${expected_tien_cuoc}    Get From Dictionary    ${item}    stake
         ${expected_thang_thua}    Get From Dictionary    ${item}    winlost
         ${expected_thuong}    Get From Dictionary    ${item}    commission    default=0
+        IF    '${expected_thuong}'=='None'
+            ${expected_thuong}    Set Variable    0
+        END
         
         ${expected_thoi_gian}    Convert Date To Utc7 Without Time    ${expected_thoi_gian}
         ${expected_tien_cuoc}    Format With K From Original    ${expected_tien_cuoc}

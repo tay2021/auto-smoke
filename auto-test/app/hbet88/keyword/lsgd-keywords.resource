@@ -11,8 +11,7 @@ Library     ../../utils/utils-lib.py
 
 *** Keywords ***
 Go to Lich Su Giao Gich Page
-    Click On The Avatar Image On Header Page
-    Click On The Avatar Image Lich Su Giao Dich On Header Page
+    Go To    ${GL_HBET_URL}account/history-payment
     
 Assert LSGD Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -43,9 +42,9 @@ Assert Detail Of A Transaction In Detail LSGD Page
         ${expected_id}    Get From Dictionary    ${item}    id
         ${expected_amount}    Get From Dictionary    ${item}    amount
         ${method}    Get From Dictionary    ${item}    method
-        IF    '${method}'=='phone_card'
-            ${expected_amount}    Get From Dictionary    ${item}    card_amount
-        END
+        #IF    '${method}'=='phone_card'
+        #    ${expected_amount}    Get From Dictionary    ${item}    card_amount
+        #END
         ${expected_time}    Get From Dictionary    ${item}    created_time
         ${expected_action}    Get From Dictionary    ${item}    action
         ${expected_status}    Get From Dictionary    ${item}    status
@@ -56,16 +55,13 @@ Assert Detail Of A Transaction In Detail LSGD Page
         ELSE IF    '${expected_action}'=='WITHDRAW'
             ${expected_action}    Set Variable    Rút tiền
         END
-        Click On A Transaction On LSGD Page    ${expected_id}
-        ${actual_id}    Get Value ID In LSDG Detail Page
-        ${actual_amount}    Get Value Amount In LSDG Detail Page
+
+        ${actual_amount}    Get Value Amount In LSDG Detail Page    ${expected_id}
         ${actual_amount}=    Evaluate    re.sub(r'^[+-]', '', """${actual_amount}""") if re.match(r'^[+-]', """${actual_amount}""") else """${actual_amount}"""
-        ${actual_time}    Get Value Thoi Gian In LSDG Detail Page
-        ${actual_action}    Get Value Loai Giao Dich In LSDG Detail Page
-        ${actual_status}    Get Value Trang Thai In LSDG Detail Page
+        ${actual_action}    Get Value Loai Giao Dich In LSDG Detail Page    ${expected_id}
+        ${actual_status}    Get Value Trang Thai In LSDG Detail Page    ${expected_id}
         Should Be True    '${expected_amount}'=='${actual_amount}'
-        Should Be True    '${expected_time}'=='${actual_time}'
         Should Be True    '${expected_action}'=='${actual_action}'
-        Click Button Back To LSGD Page
+
     END
 

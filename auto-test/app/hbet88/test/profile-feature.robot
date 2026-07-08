@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../keyword/login-keywords.resource
-Resource    ../gem88-variable.resource
+Resource    ../hbet-variable.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../keyword/user-profile-keywords.resource
@@ -12,12 +12,11 @@ Test Teardown    Close Browser And Delete Temp Folder Of Profile Browser
 *** Test Cases ***
 As a user I want to check Profile user correct
     [Tags]    smoke    profile
-    Open Gem88 Site And Maximize Window    ${GL_GEM88_URL}
+    Open Hbet Site And Maximize Window    ${GL_HBET_URL}
     Close Welcome Pop Up If Shown
-    Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}
-    Assert Login To Site88 Successfully
+    Login To Site Hbet    ${VALID_USERNAME}    ${VALID_PASSWORD}
+    Assert Login To Site Successfully
     Get And Set Bearer Token From Cookie After Login Successfully
-    Close Lucky Wheel Notification If Shown
     ${response}    Send GET Request To Get Profile User    ${GL_BEARER_TOKEN}
     ${content_api_profile}    Get Content Of Api Profile     ${response}
     ${dict}    Get Profile Information Detail    ${content_api_profile}

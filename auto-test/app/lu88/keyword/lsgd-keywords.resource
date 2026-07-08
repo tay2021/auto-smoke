@@ -57,7 +57,7 @@ Assert Detail Of A Transaction In Detail LSGD Page
         END
 
         ${actual_amount}    Get Value Amount In LSDG Detail Page    ${expected_id}
-        ${actual_amount}=    Evaluate    "${actual_amount}"[1:]
+        ${actual_amount}=    Evaluate    re.sub(r'^[+-]', '', """${actual_amount}""") if re.match(r'^[+-]', """${actual_amount}""") else """${actual_amount}"""
         ${actual_action}    Get Value Loai Giao Dich In LSDG Detail Page    ${expected_id}
         ${actual_status}    Get Value Trang Thai In LSDG Detail Page    ${expected_id}
         Should Be True    '${expected_amount}'=='${actual_amount}'

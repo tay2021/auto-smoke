@@ -14,7 +14,7 @@ Library     String
 
 *** Keywords ***
 Go to Lich Su Cuoc Page
-    Go To    ${GL_LU88_URL}/account/history-bet
+    Go To    ${GL_HBET_URL}/account/history-bet
     
 Assert Lich Su Cuoc Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

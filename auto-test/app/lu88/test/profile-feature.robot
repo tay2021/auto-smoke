@@ -23,6 +23,9 @@ As a user I want to check Profile user correct
     ${expected_username}=    Get From Dictionary    ${dict}    username
     ${expected_fullname}=    Get From Dictionary    ${dict}    fullname
     ${expected_email}=    Get From Dictionary    ${dict}    email
+    IF    '${expected_email}'=='None'
+        ${expected_email}    Set Variable    ${EMPTY}
+    END
     ${expected_phone}=    Get From Dictionary    ${dict}    phone
     ${expected_telegram}=    Get From Dictionary    ${dict}    tele_chat_id
     Go To Profile Page
