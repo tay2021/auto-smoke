@@ -11,7 +11,7 @@ Library     ../../utils/utils-lib.py
 
 *** Keywords ***
 Go to Lich Su Giao Gich Page
-    Go To    ${GL_LU88_URL}account/history-payment
+    Go To    ${GL_PUB88_URL}account/history-payment
     
 Assert LSGD Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -42,7 +42,9 @@ Assert Detail Of A Transaction In Detail LSGD Page
         ${expected_id}    Get From Dictionary    ${item}    id
         ${expected_amount}    Get From Dictionary    ${item}    amount
         ${method}    Get From Dictionary    ${item}    method
-
+        #IF    '${method}'=='phone_card'
+        #    ${expected_amount}    Get From Dictionary    ${item}    card_amount
+        #END
         ${expected_time}    Get From Dictionary    ${item}    created_time
         ${expected_action}    Get From Dictionary    ${item}    action
         ${expected_status}    Get From Dictionary    ${item}    status
@@ -58,10 +60,8 @@ Assert Detail Of A Transaction In Detail LSGD Page
         ${actual_amount}=    Evaluate    re.sub(r'^[+-]', '', """${actual_amount}""") if re.match(r'^[+-]', """${actual_amount}""") else """${actual_amount}"""
         ${actual_action}    Get Value Loai Giao Dich In LSDG Detail Page    ${expected_id}
         ${actual_status}    Get Value Trang Thai In LSDG Detail Page    ${expected_id}
+        Should Be True    '${expected_amount}'=='${actual_amount}'
         Should Be True    '${expected_action}'=='${actual_action}'
-        IF    '${method}'!='phone_card'
-            Should Be True    '${expected_amount}'=='${actual_amount}'
-        END
 
     END
 

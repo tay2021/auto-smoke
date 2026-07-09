@@ -17,7 +17,13 @@ Assert Withdraw Correct
     ${json}    Convert String To Json    ${content_api_bank}
     ${rolling}    Get Value From Json    ${json}    $.data.rolling
     ${len}=    Get Length    ${rolling}
-    IF    ${len}==0
+    ${rolling}    Set Variable    ${rolling}[0]
+    
+    IF    '${rolling}'=='${None}' or '${rolling}'=='${EMPTY}'
+        ${rolling}    Set Variable    0
+    END
+    
+    IF    ${len}==0 or ${rolling}==0
         #check phan usser co bank chinh chu hay khong
         ${has_bank_cc}    Check User Has Any Bank Chinh Chu
         IF    ${has_bank_cc}
@@ -66,7 +72,7 @@ Check User Has Any Bank Chinh Chu
     ${flag_bank_cc}    Set Variable    False
     IF    ${count}!=0
         FOR    ${item}    IN    @{data}[0]
-            ${is_review}    Get Dictionary Values    ${item}    is_reviewed
+            ${is_review}    Get From Dictionary    ${item}    is_reviewed
             IF    ${is_review}
                 ${flag_bank_cc}    Set Variable    True
             END

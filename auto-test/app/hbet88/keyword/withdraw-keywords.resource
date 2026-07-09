@@ -75,7 +75,7 @@ Check User Has Any Bank Chinh Chu
     ${flag_bank_cc}    Set Variable    False
     IF    ${count}!=0
         FOR    ${item}    IN    @{data}[0]
-            ${is_review}    Get Dictionary Values    ${item}    is_reviewed
+            ${is_review}    Get From Dictionary    ${item}    is_reviewed
             IF    ${is_review}
                 ${flag_bank_cc}    Set Variable    True
             END

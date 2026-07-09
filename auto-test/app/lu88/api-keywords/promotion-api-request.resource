@@ -10,7 +10,7 @@ Send POST Request To Get Lucky Wheel V2 Promotion Of User
     [Arguments]    ${p_bearer_token}
     ${dict}=    Create Dictionary    Authorization=Bearer ${p_bearer_token}
     ${headers}=    Get Header For Brand Api Request    ${dict}
-    ${response}    Send Api Request To Server    POST    ${GL_GEM88_GATEWAY_URL}    ${URI_LUCKY_WHEEL_V2}   ${headers}
+    ${response}    Send Api Request To Server    POST    ${GL_LU88_GATEWAY_URL}    ${URI_LUCKY_WHEEL_V2}   ${headers}
     RETURN    ${response}
 
 Get Content Of Api Lucky Wheel V2 Promotion
