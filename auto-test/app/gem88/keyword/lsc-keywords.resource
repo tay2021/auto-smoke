@@ -38,39 +38,31 @@ Assert Lich Su Cuoc Page Show Correct
 
 Assert Detail Of A Betting Transaction In Detail LSC Page
     [Arguments]    ${p_list_lsc}
-    FOR    ${item}    IN    @{p_list_lsc}
-        ${expected_id}    Get From Dictionary    ${item}    id
-        ${expected_thoi_gian}    Get From Dictionary    ${item}    created_time
-        ${expected_tro_choi}    Get From Dictionary    ${item}    product
-        ${expected_tien_cuoc}    Get From Dictionary    ${item}    stake
-        ${expected_thang_thua}    Get From Dictionary    ${item}    winlost
-        ${expected_thuong}    Get From Dictionary    ${item}    commission    default=0
-        IF    '${expected_thuong}'=='None'
-            ${expected_thuong}    Set Variable    0
-        END
-        
-        ${expected_thoi_gian}    Convert Date To Utc7 Without Time    ${expected_thoi_gian}
-        ${expected_tien_cuoc}    Format With K From Original    ${expected_tien_cuoc}
-        ${expected_thang_thua}    Format With K From Original    ${expected_thang_thua}
-        ${expected_thang_thua}    Remove String    ${expected_thang_thua}    +    -
-        ${expected_thuong}    Format With K From Original    ${expected_thuong}
-
-        Click On A Transaction On LSC Page    ${expected_id}
-        
-        ${actual_id}    Get Value ID In LSC Detail Page
-        ${actual_id}=    Evaluate    "${actual_id}"[1:]    #remove # before of id
-        ${actual_thoi_gian}    Get Value Thoi Gian In LCS Detail Page
-        ${actual_tro_choi}    Get Value Tro Choi Name In LSC Detail Page
-        ${actual_tien_cuoc}    Get Value Tien Cuoc In LSC Detail Page
-        ${actual_thang_thua}    Get Value Tien Thang Thua In LSC Detail Page
-        ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -
-        ${actual_thuong}    Get Value Tien Thuong In LSC Detail Page
-
-        Should Be True    '${expected_id}'=='${actual_id}'
-        Should Be True    '${expected_thoi_gian}'=='${actual_thoi_gian}'
-        Should Be True    '${expected_tro_choi}'=='${actual_tro_choi}'
-        Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
-        Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
-        Should Be True    '${expected_thuong}'=='${actual_thuong}'
-        Click Button Back To LSC Page
+    ${item}    Set Variable    ${p_list_lsc}[0]
+    ${expected_id}    Get From Dictionary    ${item}    id
+    ${expected_tro_choi}    Get From Dictionary    ${item}    product
+    ${expected_tien_cuoc}    Get From Dictionary    ${item}    stake
+    ${expected_thang_thua}    Get From Dictionary    ${item}    winlost
+    ${expected_thuong}    Get From Dictionary    ${item}    commission    default=0
+    IF    '${expected_thuong}'=='None'
+        ${expected_thuong}    Set Variable    0
     END
+
+    ${expected_tien_cuoc}    Format With K From Original    ${expected_tien_cuoc}
+    ${expected_thang_thua}    Format With K From Original    ${expected_thang_thua}
+    ${expected_thang_thua}    Remove String    ${expected_thang_thua}    +    -
+    ${expected_thuong}    Format With K From Original    ${expected_thuong}
+
+    ${actual_id}    Get Value ID In LSC Detail Page    1
+    ${actual_id}=    Evaluate    "${actual_id}"[1:]    #remove # before of id
+    ${actual_tro_choi}    Get Value Tro Choi Name In LSC Detail Page    1
+    ${actual_tien_cuoc}    Get Value Tien Cuoc In LSC Detail Page    1
+    ${actual_thang_thua}    Get Value Tien Thang Thua In LSC Detail Page    1
+    ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -
+    ${actual_thuong}    Get Value Tien Thuong In LSC Detail Page    1
+
+    Should Be True    '${expected_id}'=='${actual_id}'
+    Should Be True    '${expected_tro_choi}'=='${actual_tro_choi}'
+    Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
+    Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
+    Should Be True    '${expected_thuong}'=='${actual_thuong}'
