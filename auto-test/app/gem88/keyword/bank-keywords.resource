@@ -8,8 +8,7 @@ Resource    ../../common/common-keywords.resource
 
 *** Keywords ***
 Go To Quan Ly Bank Page
-    Click On The Avatar Image On Header Page
-    Click On The Avatar Image Quan Ly Ngan Hang On Header Page
+    Go To    ${GL_GEM88_URL}account/banking
 
 Assert Quan Ly Bank Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

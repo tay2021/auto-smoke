@@ -8,9 +8,9 @@ ${btn_close_welcome_pop_up}    //div[contains(@class,'dots welcome-banner')]/../
 
 *** Keywords ***
 Get Value Of Vip Level On VIP Program Page
-    ${value}    Get Text    //*[contains(text(),'Hạng hiện tại')]/preceding-sibling::span
+    ${value}    Get Text    //*[contains(text(),'Hạng hiện tại')]/parent::div/following-sibling::div[1]/div[1]/div[2]/div[1]/div[1]/span
     RETURN    ${value}
 
-Get Value Of Accumulate On VIP Program Page
-    ${value}    Get Text    (//*[contains(@class,'swiper-slide-active')])[1]//*[contains(text(),'Lên cấp tiếp theo')]/../div[1]/div[1]/span
-    RETURN    ${value}
+#Get Value Of Accumulate On VIP Program Page
+#    ${value}    Get Text    (//*[contains(@class,'swiper-slide-active')])[1]//*[contains(text(),'Lên cấp tiếp theo')]/../div[1]/div[1]/span
+#    RETURN    ${value}

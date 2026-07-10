@@ -7,8 +7,7 @@ Resource    ../page/page-profile-information.resource
 
 *** Keywords ***
 Go to Profile Page
-    Click On The Avatar Image On Header Page
-    Click On The Avatar Image Profile Information On Header Page
+    Go To    ${GL_GEM88_URL}account/profile
     
     
 Assert Profile Information Are Correct

@@ -3,9 +3,6 @@
 ${GL_BROWSER}                   chromium
 ${GL_HEADLESS}                  ${False}
 ${GL_DEFAULT_TIMEOUT}           30000
-${GL_DEVICE_NAME}               iPhone 14 Pro Max
-${GL_VIEWPORT_WIDTH}            1920
-${GL_VIEWPORT_HEIGHT}           1080
 
 
 # biến global bearer token để dùng cho api request

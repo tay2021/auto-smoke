@@ -1,6 +1,5 @@
 *** Settings ***
 Resource    ../page/page-header.resource
-Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-deposit.resource
 Resource    ../page/page-the-cao.resource
 Resource    ../page/page-flashpay.resource
@@ -10,8 +9,7 @@ Library    String
 
 *** Keywords ***
 Go To Deposit Page
-    Click On The Avatar Image On Header Page
-    Click On The Button Nap Tien On Header Page
+    Go To    ${GL_GEM88_URL}account/deposit/qrcode
 
 Assert Create Phieu Nap By Crypto Correct
     Click On Tab Nap Tien Crypto On Deposit Page

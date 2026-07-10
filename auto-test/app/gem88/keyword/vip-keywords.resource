@@ -1,16 +1,13 @@
 *** Settings ***
 Resource    ../page/page-header.resource
 Resource    ../api-keywords/user-api-request.resource
-Resource    ../../common/common-keywords.resource
 Resource    ../page/page-vip.resource
 
 
 
 *** Keywords ***
 Go To VIP User Page
-    Click On The Avatar Image On Header Page
-    Click On The Avatar Image VIP On Header Page
-
+    Go To    ${GL_GEM88_URL}su-kien/vip-club
 
 Assert VIP User Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -29,6 +26,6 @@ Assert VIP User Page Show Correct
     ...    ELSE    Fail    Invalid input: ${level}[0]
     ${expected_accumulate_stake}=    Evaluate    "{:,.0f}".format(float(${accumulate_stake[0]}) * 1000)
     ${actual_vip_level}    Get Value Of Vip Level On VIP Program Page
-    ${actual_vip_accumulate}    Get Value Of Accumulate On VIP Program Page
+    #${actual_vip_accumulate}    Get Value Of Accumulate On VIP Program Page
     #Should Be True    '${expected_level}'=='${actual_vip_level}'
     #Should Be True    '${expected_accumulate_stake}'=='${actual_vip_accumulate}'

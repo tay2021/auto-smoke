@@ -17,7 +17,8 @@ Click On Button Tao Ma QR On Flash Page
     Click    //button[text()='Tạo mã QR Code']
     
 Get Locator Attribute Src Ma QR Flash Pay On Flash Page
-    ${value}    Get Attribute    //img[@id='codepay-qr']    src
+    Wait For Elements State    //img[contains(@alt,'data:image/png')]    visible
+    ${value}    Get Attribute    //img[contains(@alt,'data:image/png')]    src
     RETURN    ${value}
 
 

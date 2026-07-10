@@ -13,7 +13,7 @@ ${img_avatar_lsc}                        img[alt='Lịch sử cược']
 ${img_avatar_quanly_bank}                img[alt='Quản lý ngân hàng']
 ${img_avatar_promotion}                  img[alt='Khuyến mãi áp dụng']
 ${img_avatar_vip}                        img[alt='VIP club']
-${img_avatar_gift_code}                  img[alt='Gift code']
+${img_avatar_gift_code}                  //span[text()='Gift code']
 
 
 

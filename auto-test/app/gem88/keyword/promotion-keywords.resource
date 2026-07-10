@@ -11,8 +11,7 @@ Library     ../../utils/utils-lib.py
 
 *** Keywords ***
 Go To User Promotion Page
-    Click On The Avatar Image On Header Page
-    Click On The Avatar Image Promotion On Header Page
+    Go To    ${GL_GEM88_URL}account/promotion
     
 Assert User Promotion Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

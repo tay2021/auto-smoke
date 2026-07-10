@@ -14,8 +14,7 @@ Library     String
 
 *** Keywords ***
 Go to Lich Su Cuoc Page
-    Click On The Avatar Image On Header Page
-    Click On The Avatar Image Lich Su Cuoc On Header Page
+    Go To    ${GL_GEM88_URL}account/history/bet
     
 Assert Lich Su Cuoc Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

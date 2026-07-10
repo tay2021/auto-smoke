@@ -2,8 +2,6 @@
 Library    Browser    timeout=15s
 
 
-*** Variables ***
-
 
 *** Keywords ***
 Select Nha Mang On Deposit The Cao Page
@@ -15,23 +13,26 @@ Select Nha Mang On Deposit The Cao Page
     
 Input Serial The Cao On Deposit The Cao Page
     [Arguments]    ${p_serial}
-    ${locator}    Set Variable    //div[@class='deposit-wrapper']/div[1]/div[2]//*[@id='card_serial']
+    ${locator}    Set Variable    (//input[@id='card_serial'])[1]
     Wait For Elements State    ${locator}    visible
     Fill Text    ${locator}    ${p_serial}
 
 Input PIN The Cao On Deposit The Cao Page
     [Arguments]    ${p_pin}
-    ${locator}    Set Variable    //div[@class='deposit-wrapper']/div[1]/div[2]//*[@id='card_code']
+    ${locator}    Set Variable    (//input[@id='card_code'])[1]
     Wait For Elements State    ${locator}    visible
     Fill Text    ${locator}    ${p_pin}
 
 Select Menh Gia The Cao On Deposit The Cao Page
     [Arguments]    ${p_menh_gia}
-    ${locator}    Set Variable    (//div[@class='deposit-wrapper']/div[1]/div[2]//*[contains(text(),'${p_menh_gia}')])[1]
+    ${locator}    Set Variable    (//div[text()='Mệnh giá nạp'])[1]/../div[2]//*[normalize-space()='${p_menh_gia}K']
     Wait For Elements State    ${locator}    visible
     Click    ${locator}
 
 Click Button Nap Tien On Deposit The Cao Page
-    Click    //div[@class='deposit-wrapper']/div[1]/div[2]//button[text()='NẠP TIỀN']
+    ${locator}    Set Variable    (//button[text()='NẠP TIỀN'])[1]
+    Wait For Elements State    ${locator}    visible
+    Sleep    1s
+    Click    ${locator}
 
     

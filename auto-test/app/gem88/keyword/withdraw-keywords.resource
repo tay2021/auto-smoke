@@ -7,8 +7,7 @@ Library    String
 
 *** Keywords ***
 Go To Withdraw Page
-    Click On The Avatar Image On Header Page
-    Click On The Button Rut Tien On Header Page
+    Go To    ${GL_GEM88_URL}account/withdraw/banking
 
 Assert Withdraw Correct
     #check user co bank chinh chu hay ko
@@ -49,7 +48,11 @@ Select Bank And Input Bank Info On Withdraw Page
 Input Amount And Phone Number On Withdraw Page
     [Arguments]    ${p_amount}    ${p_phone}
     Fill Text    //*[text()='Nhập số tiền cần rút']/preceding-sibling::input    ${p_amount}
-    Fill Text    //*[text()='Xác nhận số điện thoại']/preceding-sibling::input    ${p_phone}
+    ${locator_sodt}    Set Variable    //*[text()='Xác nhận số điện thoại']/preceding-sibling::input
+    Wait For Elements State    ${locator_sodt}    visible
+    Type Text    ${locator_sodt}    ${p_phone}    delay=0.5
+    Sleep    2s
+    Keyboard Key    press    Tab
 
 Click On Button Rut Tien On Withdraw Page
     Click    //button[text()='RÚT TIỀN']

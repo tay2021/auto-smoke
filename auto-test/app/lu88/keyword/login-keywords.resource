@@ -32,8 +32,3 @@ Assert Login To Site88 Successfully
     ${exits}    Check Element Exists On Page    ${locator}
     Should Be True    ${exits}
 
-    
-Close Browser And Delete Temp Folder Of Profile Browser
-    Run Keywords    Close Browser    
-    ...    AND    Sleep    2s
-    ...    AND    Remove Directory    ${GL_PROFILE_PATH}    recursive=True

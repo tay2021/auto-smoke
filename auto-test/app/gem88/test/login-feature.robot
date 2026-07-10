@@ -2,7 +2,8 @@
 Resource    ../keyword/login-keywords.resource
 Resource    ../gem88-variable.resource
 Library    OperatingSystem
-Test Teardown    Close Browser And Delete Temp Folder Of Profile Browser
+
+Test Teardown    Close Browser And Terminate Test Running
 
 
 
@@ -13,4 +14,3 @@ As a user I want to check Login to site Gem88 successfully
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully
-
