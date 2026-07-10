@@ -2,7 +2,8 @@
 Resource    ../keyword/login-keywords.resource
 Resource    ../pub88-variable.resource
 Library    OperatingSystem
-Test Teardown    Close Browser And Delete Temp Folder Of Profile Browser
+
+Test Teardown    Close Browser And Terminate Test Running
 
 
 

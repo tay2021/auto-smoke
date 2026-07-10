@@ -83,5 +83,7 @@ Create Copy Of Original Chrome Profile
     # Verify the copy was successful
     Directory Should Exist    ${dest_folder}
     Log    Created copy: ${dest_folder}
+    RETURN    ${dest_folder}
 
-    [Return]    ${dest_folder}
+Close Browser And Terminate test running
+    Run Keywords    Close Browser
