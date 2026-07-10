@@ -7,7 +7,7 @@ Test Teardown    Close Browser And Delete Temp Folder Of Profile Browser
 
 
 *** Test Cases ***
-As a user I want to check Login to site Lu88 successfully
+As a user I want to check Login to site Hbet successfully
     [Tags]    smoke    login
     Open Hbet Site And Maximize Window    ${GL_HBET_URL}
     Close Welcome Pop Up If Shown
