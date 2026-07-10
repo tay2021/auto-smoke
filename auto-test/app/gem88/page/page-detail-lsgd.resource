@@ -9,33 +9,31 @@ ${table_xpath_prefix}    //div[@class='root-account-content-wrapper']//div[conta
 
 *** Keywords ***
 Get Value Amount In LSDG Detail Page
-    ${value}    Get Text     ${table_xpath_prefix}/div[1]
+    [Arguments]    ${p_id_ticket}
+    ${value}    Get Text     //tbody//td[1]//span[normalize-space()='#${p_id_ticket}']/../../../following-sibling::td[2]/div
     RETURN    ${value}
 
 Get Value ID In LSDG Detail Page
-    ${value}    Get Text     ${table_xpath_prefix}//p[text()='ID']/following-sibling::div/span
+    [Arguments]    ${p_id_ticket}
+    ${value}    Get Text     //tbody//td[1]//span[normalize-space()='#${p_id_ticket}']/../../../following-sibling::td[1]/div[1]
     RETURN    ${value}
 
 Get Value Thoi Gian In LSDG Detail Page
-    ${value}    Get Text     ${table_xpath_prefix}//p[text()='Thời gian']/following-sibling::p
+    [Arguments]    ${p_id_ticket}
+    ${value}    Get Text     //tbody//td[1]//span[normalize-space()='#${p_id_ticket}']/../../../div[1]/div[2]
     RETURN    ${value}
 
 Get Value Loai Giao Dich In LSDG Detail Page
-    ${value}    Get Text     ${table_xpath_prefix}//p[text()='Loại']/following-sibling::p
+    [Arguments]    ${p_id_ticket}
+    ${value}    Get Text     //tbody//td[1]//span[normalize-space()='#${p_id_ticket}']/../../../following-sibling::td[1]/div
     RETURN    ${value}
 
 Get Value Ngan Hang In LSDG Detail Page
-    ${value}    Get Text     ${table_xpath_prefix}//p[text()='Ngân hàng']/following-sibling::p/span
+    [Arguments]    ${p_id_ticket}
+    ${value}    Get Text    //tbody//td[1]//span[normalize-space()='#${p_id_ticket}']/../../../following-sibling::td[4]/div[1]/span
     RETURN    ${value}
 
 Get Value Trang Thai In LSDG Detail Page
-    ${value}    Get Text     ${table_xpath_prefix}//p[text()='Trạng thái']/following-sibling::div//span
+    [Arguments]    ${p_id_ticket}
+    ${value}    Get Text    //tbody//td[1]//span[normalize-space()='#${p_id_ticket}']/../../../following-sibling::td[5]//span
     RETURN    ${value}
-
-Click Button Back to LSGD Page
-    ${btn_back}    Set Variable    //*[contains(@*[name()="xlink:href"], '#arrow-left')]
-    Wait For Elements State    ${btn_back}
-    Click    ${btn_back}
-
-
-
