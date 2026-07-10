@@ -3,7 +3,7 @@ Resource    ../keyword/login-keywords.resource
 Resource    ../hbet-variable.resource
 Resource    ../keyword/p2p-keywords.resource
 
-Test Teardown    Close Browser And Delete Temp Folder Of Profile Browser
+Test Teardown    Close Browser And Terminate Test Running
 
 *** Test Cases ***
 As a user I want to check P2p transaction correct

@@ -14,6 +14,20 @@ ${SOURCE_FOLDER}    ${EXECDIR}${/}chrome-profile-bak    # Your existing folder
 ${DEST_BASE_DIR}    ${EXECDIR}${/}chrome-profile
 
 *** Keywords ***
+Open Site and maximize window
+    [Arguments]    ${p_url}
+    ${args}=    Create List
+    ...    --disable-dev-shm-usage
+    ...    --no-sandbox
+    ...    --disable-gpu
+    New Browser    browser=${GL_BROWSER}    headless=${GL_HEADLESS}    args=${args}
+    New Context
+    New Page    ${p_url}    wait_until=load
+    Set Viewport Size    width=${GL_VIEWPORT_WIDTH}    height=${GL_VIEWPORT_HEIGHT}
+
+
+
+
 Get View Port Of Device For Testing
     ${device}=    Get Device    ${GL_DEVICE_NAME}
     ${width}=    Set Variable    ${device}[screen][width]

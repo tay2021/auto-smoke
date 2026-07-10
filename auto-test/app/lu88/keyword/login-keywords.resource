@@ -3,7 +3,6 @@ Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
 Resource    ../page/page-header.resource
-Resource    ../api-keywords/promotion-api-request.resource
 Library     OperatingSystem
 
 
@@ -12,15 +11,7 @@ Library     OperatingSystem
 *** Keywords ***
 Open Lu88 site and maximize window
     [Arguments]    ${p_url}
-    ${profile_path}    Create Copy Of Original Chrome Profile    ${SOURCE_FOLDER}    ${DEST_BASE_DIR}
-    Set Global Variable    ${GL_PROFILE_PATH}    ${profile_path}
-    New Persistent Context    userDataDir=${profile_path}
-    ...    browser=${GL_BROWSER}
-    ...    headless=${GL_HEADLESS}
-    ...    args=["--start-maximized"]
-    ...    viewport=None
-    New Page    ${p_url}    wait_until=load
-
+    Open Site and maximize window    ${p_url}
 
 Close Welcome Pop Up If Shown
     ${btn_close_welcome_pop_up}    Get Button Close Welcome Pop Up Element

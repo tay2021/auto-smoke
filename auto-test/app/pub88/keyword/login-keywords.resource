@@ -12,14 +12,7 @@ Library     OperatingSystem
 *** Keywords ***
 Open Pub88 site and maximize window
     [Arguments]    ${p_url}
-    ${args}=    Create List
-    ...    --disable-dev-shm-usage
-    ...    --no-sandbox
-    ...    --disable-gpu
-    New Browser    browser=${GL_BROWSER}    headless=${GL_HEADLESS}    args=${args}
-    New Context
-    New Page    ${p_url}    wait_until=load
-    Set Viewport Size    width=${GL_VIEWPORT_WIDTH}    height=${GL_VIEWPORT_HEIGHT}
+    Open Site and maximize window    ${p_url}
 
 
 Close Welcome Pop Up If Shown

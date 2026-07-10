@@ -12,14 +12,7 @@ Library     OperatingSystem
 *** Keywords ***
 Open Hbet site and maximize window
     [Arguments]    ${p_url}
-    ${profile_path}    Create Copy Of Original Chrome Profile    ${SOURCE_FOLDER}    ${DEST_BASE_DIR}
-    Set Global Variable    ${GL_PROFILE_PATH}    ${profile_path}
-    New Persistent Context    userDataDir=${profile_path}
-    ...    browser=${GL_BROWSER}
-    ...    headless=${GL_HEADLESS}
-    ...    args=["--start-maximized"]
-    ...    viewport=None
-    New Page    ${p_url}    wait_until=load
+    Open Site and maximize window    ${p_url}
 
 
 Close Welcome Pop Up If Shown
@@ -40,9 +33,3 @@ Assert Login To Site Successfully
     ${locator}    Get Label Info Login Successfully
     ${exits}    Check Element Exists On Page    ${locator}
     Should Be True    ${exits}
-
-    
-Close Browser And Delete Temp Folder Of Profile Browser
-    Run Keywords    Close Browser    
-    ...    AND    Sleep    2s
-    ...    AND    Remove Directory    ${GL_PROFILE_PATH}    recursive=True
