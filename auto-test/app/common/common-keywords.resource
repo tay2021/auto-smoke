@@ -52,3 +52,10 @@ Get And Set Bearer Token From Cookie After Login Successfully
 
 Close Browser And Terminate test running
     Run Keywords    Close Browser
+    
+Generate Random Username
+    [Arguments]    ${p_prefix}
+    ${epoch_ms}=    Evaluate    int(time.time() * 1000)
+    ${unique_id}=    Evaluate    str(${epoch_ms})[-6:]
+    ${account_name}=    Set Variable    ${p_prefix}${unique_id}
+    RETURN    ${account_name}

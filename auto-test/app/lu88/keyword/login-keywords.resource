@@ -8,6 +8,7 @@ Resource    ../page/page-daily-login.resource
 Library     OperatingSystem
 Resource    ../api-keywords/user-api-request.resource
 Library    String
+Resource    ../page/page-model-register.resource
 
 
 
@@ -62,4 +63,18 @@ Assert Login To Site Lu88 Dai Ly Successfully
     Should Be True    '${expected_username}'=='${actual_username}'
     Should Be True    '${expected_balance}'=='${actual_balance}'
 
+Open Register Form
+    [Arguments]    ${p_url_form_register}
+    Go to    ${p_url_form_register}
+ 
+Register An Lu88 Account
+    [Arguments]    ${p_username}    ${p_password}    ${p_phone_number}
+    Input Username On Model Register    ${p_username}
+    Input Password On Model Register    ${p_password}
+    Input Phone Number On Model Register    ${p_phone_number}
+    Click Button Register On Model Register
+
+Assert Register An Account Successfully
+    ${exist}    Check Element Exists On Page    //*[contains(text(),'Đăng ký thành công')]
+    Should Be True    ${exist}
 

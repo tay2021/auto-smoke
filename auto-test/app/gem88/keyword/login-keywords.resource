@@ -2,6 +2,7 @@
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
+Resource    ../page/page-model-register.resource
 Resource    ../api-keywords/promotion-api-request.resource
 Library     OperatingSystem
 
@@ -46,3 +47,22 @@ Close Lucky Wheel Notification If Shown
     IF    not ${is_empty}
         Click Button Close Dap Da Notification
     END
+
+Open Register Form
+    [Arguments]    ${p_url_form_register}
+    Go to    ${p_url_form_register}
+    Wait For Elements State    //div[text()='Tạo tài khoản ngay']    visible
+    Click    //div[text()='Tạo tài khoản ngay']
+
+Register An Gem88 Account
+    [Arguments]    ${p_username}    ${p_password}    ${p_phone_number}
+    Input Username On Model Register    ${p_username}
+    Input Password On Model Register    ${p_password}
+    Input Phone Number On Model Register    ${p_phone_number}
+    Click Button Register On Model Register
+
+Assert Register An Account Successfully
+    [Arguments]    ${p_expected_usser}
+    ${exist}    Check Element Exists On Page    //*[contains(text(),'Chào mừng ${p_expected_usser}')]
+    Should Be True    ${exist}
+
