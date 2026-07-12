@@ -3,7 +3,11 @@ Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
 Resource    ../page/page-header.resource
+Resource    ../page/page-daily-header.resource
+Resource    ../page/page-daily-login.resource
 Library     OperatingSystem
+Resource    ../api-keywords/user-api-request.resource
+Library    String
 
 
 
@@ -31,4 +35,31 @@ Assert Login To Site88 Successfully
     ${locator}    Get Label Info Login Successfully
     ${exits}    Check Element Exists On Page    ${locator}
     Should Be True    ${exits}
+
+Go To Site Lu88 Dai Ly
+    Go To    ${GL_LU88_DAILY_URL}
+    Wait For Function    document.readyState === "complete"
+    
+Login To Site Lu88 Dai Ly
+    [Arguments]    ${p_username_daily}    ${p_password_daily}
+    Input Username On Login Page Dai Ly    ${p_username_daily}
+    Input Password On Login Page Dai Ly    ${p_password_daily}
+    Click Button Dang Nhap On Login Page Dai Ly
+
+
+Assert Login To Site Lu88 Dai Ly Successfully
+    ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
+    ${response}    Send GET Request To Get Profile User    ${bearer_token}
+    ${content_api_lsc}    Get Content Of API LSC    ${response}
+    ${json}    Convert String To Json    ${content_api_lsc}
+    ${username}    Get Value From Json    ${json}    $.data.username
+    ${balance}    Get Value From Json    ${json}    $.data.balance
+    ${expected_username}    Set Variable    ${username}[0]
+    ${expected_balance}    Set Variable    ${balance}[0]
+    ${actual_username}    Get UserName At Header Name On Page Daily
+    ${actual_balance}    Get Balance User At Header Name On Page Daily
+    ${actual_balance}    Remove String    ${actual_balance}    K    ,    ${SPACE}
+    Should Be True    '${expected_username}'=='${actual_username}'
+    Should Be True    '${expected_balance}'=='${actual_balance}'
+
 

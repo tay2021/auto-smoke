@@ -1,6 +1,3 @@
-*** Settings ***
-Library    Browser    timeout=15s
-
 
 
 *** Keywords ***

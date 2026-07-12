@@ -1,6 +1,3 @@
-*** Settings ***
-Library    Browser    timeout=15s
-
 
 *** Variables ***
 ${btn_dang_nhap_header}                  (//button[@id='open-login-modal'])[1]

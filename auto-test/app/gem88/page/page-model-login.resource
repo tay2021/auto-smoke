@@ -1,6 +1,3 @@
-*** Settings ***
-Library    Browser    timeout=15s
-
 
 *** Variables ***
 ${txtbox_username}    //input[@name='username']
