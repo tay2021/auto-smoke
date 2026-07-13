@@ -13,7 +13,7 @@ As a user I want to check Login to site Lu88 Dai ly successfully
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully
-    Get And Set Bearer Token From Cookie After Login Successfully
     Go To Site Lu88 Dai Ly
     Login To Site Lu88 Dai Ly    ${VALID_USERNAME}    ${VALID_PASSWORD}
+    Get And Set Bearer Token From Cookie After Login Successfully
     Assert Login To Site Lu88 Dai Ly Successfully
