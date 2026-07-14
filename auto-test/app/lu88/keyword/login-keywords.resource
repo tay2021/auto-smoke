@@ -38,7 +38,8 @@ Assert Login To Site88 Successfully
     Should Be True    ${exits}
 
 Go To Site Lu88 Dai Ly
-    Go To    ${GL_LU88_DAILY_URL}
+    [Arguments]    ${p_url_daily}
+    Go To    ${p_url_daily}
     Wait For Function    document.readyState === "complete"
     
 Login To Site Lu88 Dai Ly

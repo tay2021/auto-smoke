@@ -1,5 +1,0 @@
-2026/07/01-10:55:22.156 149321 Creating DB /Users/admin/working/smoke-test/auto-test/chrome-profile/Default/IndexedDB/https_gem88.kim_0.indexeddb.leveldb since it was missing.
-2026/07/01-10:55:22.158 149321 Reusing MANIFEST /Users/admin/working/smoke-test/auto-test/chrome-profile/Default/IndexedDB/https_gem88.kim_0.indexeddb.leveldb/MANIFEST-000001
-2026/07/01-10:55:23.420 149322 Level-0 table #5: started
-2026/07/01-10:55:23.434 149322 Level-0 table #5: 1238879 bytes OK
-2026/07/01-10:55:23.436 149322 Delete type=0 #3

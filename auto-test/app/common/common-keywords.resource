@@ -59,3 +59,19 @@ Generate Random Username
     ${unique_id}=    Evaluate    str(${epoch_ms})[-6:]
     ${account_name}=    Set Variable    ${p_prefix}${unique_id}
     RETURN    ${account_name}
+    
+Remove Space And Char K Out Of String
+    [Arguments]    ${p_string}
+    ${value}=    Evaluate    __import__('re').sub(r'[ k]', '', "${p_string}", flags=__import__('re').IGNORECASE)
+    RETURN    ${value}
+
+Convert Thousand With Comma
+    [Arguments]    ${p_str}
+    ${result}=    Evaluate    "{:,.0f}".format(int(${p_str}) / 1000)
+    RETURN    ${result}
+    
+Wait And Get Value Of Element
+    [Arguments]    ${p_element}
+    Wait For Elements State    ${p_element}    visible
+    ${value}    Get Text    ${p_element}
+    RETURN    ${value}
