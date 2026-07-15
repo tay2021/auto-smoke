@@ -1,7 +1,7 @@
 *** Variables ***
 # Browser Configuration
 ${GL_BROWSER}                   chromium
-${GL_HEADLESS}                  ${False}
+${GL_HEADLESS}                  ${True}
 ${GL_DEFAULT_TIMEOUT}           30000
 
 
