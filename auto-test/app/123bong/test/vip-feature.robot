@@ -1,0 +1,18 @@
+*** Settings ***
+Resource    ../keyword/login-keywords.resource
+Resource    ../lu88-variable.resource
+Resource    ../keyword/vip-keywords.resource
+
+Test Teardown    Close Browser And Terminate Test Running
+
+
+*** Test Cases ***
+As a user I want to check vip level user correct
+    [Tags]    smoke    vip
+    Open 123Bong Site And Maximize Window    ${GL_123BONG_URL}
+    Close Welcome Pop Up If Shown
+    Login To Site 123Bong    ${VALID_USERNAME}    ${VALID_PASSWORD}
+    Assert Login To Site 123Bong Successfully
+    Get And Set Bearer Token From Cookie After Login Successfully
+    Go To VIP User Page
+    Assert VIP User Page Show Correct
