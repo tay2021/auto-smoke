@@ -1,7 +1,7 @@
 *** Variables ***
 # Browser Configuration
 ${GL_BROWSER}                   chromium
-${GL_HEADLESS}                  ${False}
+${GL_HEADLESS}                  ${True}
 ${GL_DEFAULT_TIMEOUT}           30000
 
 
@@ -22,3 +22,16 @@ ${URI_VIP_PROGRAM}           user/vip-program/user
 
 # api promotion
 ${URI_LUCKY_WHEEL_V2}        lucky-wheel-v2/user-data
+
+
+
+# dành cho api đại lý của lu88
+${URI_DAILY_THONGKE_USER}                               agent/statistic/user
+${URI_DAILY_THONGKE_SUB}                                agent/statistic/sub
+${URI_DAILY_THONGKE_TOTAL_AGENT_BY_DAY}                 agent/statistic/total-of-agent-by-day
+${URI_DAILY_THONGKE_TOTAL_AGENT}                        agent/statistic/total-of-agent
+${URI_DAILY_DIRECT_AGENT}                               agent/statistic/direct-agent-users
+${URI_DAILY_SUB_AGENT}                                  agent/statistic/sub-agents
+${URI_DAILY_BET-BY-CATEGORY}                            agent/statistic/bet-by-category
+
+
