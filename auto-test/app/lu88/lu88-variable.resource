@@ -12,5 +12,5 @@ ${GL_LU88_DAILY_URL}             https://daily.${GL_LU88_DOMAIN}/
 #${VALID_USERNAME}            taynu001
 #${VALID_USERNAME}           taylukm100    #tk co km 100
 #${VALID_USERNAME}           taylu888    #tk co km 100
-${VALID_USERNAME}            taydaily
+${VALID_USERNAME}            taydaily1
 ${VALID_PASSWORD}            123456
