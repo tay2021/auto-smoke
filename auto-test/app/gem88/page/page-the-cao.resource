@@ -7,9 +7,12 @@ Library    Browser    timeout=15s
 Select Nha Mang On Deposit The Cao Page
     [Documentation]    viettel: 1, mobifone: 2, vinaphone: 3, zing: 4, vietnammobile: 5. Chi nhập số 
     [Arguments]    ${p_operator}
-    ${locator}    Set Variable    (//div[@class='deposit-wrapper']/div[1]/div[2]//img)[${p_operator}]
-    Wait For Elements State    ${locator}   visible
-    Click    ${locator}
+    IF    ${p_operator}!=1
+        ${locator}    Set Variable    //div[text()='Chọn Nhà mạng']/following-sibling::div/div[1]/div[${p_operator}]
+        Wait For Elements State    ${locator}   visible    15s
+        Click    ${locator}
+    END
+    
     
 Input Serial The Cao On Deposit The Cao Page
     [Arguments]    ${p_serial}
