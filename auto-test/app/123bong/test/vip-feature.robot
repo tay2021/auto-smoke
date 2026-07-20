@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../keyword/login-keywords.resource
-Resource    ../lu88-variable.resource
+Resource    ../123bong-variable.resource
 Resource    ../keyword/vip-keywords.resource
 
 Test Teardown    Close Browser And Terminate Test Running
