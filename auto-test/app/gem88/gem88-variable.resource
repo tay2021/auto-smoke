@@ -3,7 +3,7 @@ Documentation     Variables for GEM88 tests
 
 *** Variables ***
 # Application URLs
-${GL_GEM88_DOMAIN}                gem88.mom
+${GL_GEM88_DOMAIN}                gem88.uno
 ${GL_GEM88_URL}                   https://${GL_GEM88_DOMAIN}/
 ${GL_GEM88_GATEWAY_URL}           https://${GL_GEM88_DOMAIN}/gw/api/v2/
 
