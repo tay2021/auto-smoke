@@ -3,7 +3,7 @@ Documentation     Variables for HBET tests
 
 *** Variables ***
 # Application URLs
-${GL_HBET_DOMAIN}                hbet.la
+${GL_HBET_DOMAIN}                hbet.gg
 ${GL_HBET_URL}                   https://${GL_HBET_DOMAIN}/
 ${GL_HBET_GATEWAY_URL}           https://${GL_HBET_DOMAIN}/gw/api/v2/
 
