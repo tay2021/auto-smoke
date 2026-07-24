@@ -3,7 +3,7 @@ Documentation     Variables for PUB88 tests
 
 *** Variables ***
 # Application URLs
-${GL_PUB88_DOMAIN}                pub88.icu
+${GL_PUB88_DOMAIN}                pub88.ltd
 ${GL_PUB88_URL}                   https://${GL_PUB88_DOMAIN}/
 ${GL_PUB88_GATEWAY_URL}           https://${GL_PUB88_DOMAIN}/gw/api/v2/
 
