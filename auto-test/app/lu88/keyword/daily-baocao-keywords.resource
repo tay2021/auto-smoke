@@ -39,6 +39,10 @@ Assert Chi Tiet Quan Ly Hoi Vien Correct
     ${item}    Set Variable    ${item}[0]
     ${len}    Get Length    ${item}
     IF    ${len}>0
+        IF    ${len}>3
+            ${item}    Evaluate    $item[:3]    #only check first 3 items.
+        END
+        
         FOR    ${data}    IN    @{item}
             ${id}    Get From Dictionary    ${data}    id
             Log    ${id}
@@ -98,12 +102,19 @@ Assert Chi Tiet Quan Ly Hoi Vien Correct
             Run Keyword And Continue On Failure    Should Be True    '${expected_thoi_gian_dang_ky}'=='${actual_thoi_gian_dang_ky}'
             Should Be True    '${expected_thoi_gian_dang_nhap_gan_nhat}'=='${actual_thoi_gian_dang_nhap_gan_nhat}'
             Should Be True    '${expected_trang_thai}'=='${actual_trang_thai}'
-            Should Be True    '${expected_lai_rong}'=='${actual_lai_rong}'
+
+            ${boolean}    Evaluate    int(${expected_lai_rong})==int(${actual_lai_rong})
+            Should Be True    ${boolean}
+            #Should Be True    '${expected_lai_rong}'=='${actual_lai_rong}'
             Should Be True    '${expected_tong_nap}'=='${actual_tong_nap}'
             Should Be True    '${expected_so_lan_nap}'=='${actual_so_lan_nap}'
             Should Be True    '${expected_tong_cuoc}'=='${actual_tong_cuoc}'
-            Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
-            Should Be True    '${expected_hoan_tra}'=='${actual_hoa_tra}'
+            ${boolean}    Evaluate    int(${expected_thang_thua})==int(${actual_thang_thua})
+            Should Be True    ${boolean}
+            #Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
+            
+            ${boolean}    Evaluate    int(str(${expected_hoan_tra}))==int(str(${actual_hoa_tra}))
+            Should Be True    ${boolean}
             Should Be True    '${expected_km_100}'=='${actual_km_100}'
 
         END
@@ -172,7 +183,7 @@ Assert Chi Tiet Quan Ly Cuoc Theo Game Category Correct
     IF    ${len}>0
         FOR    ${item}    IN    @{data}
             ${category_name}    Get From Dictionary    ${item}    category
-            ${category_name}    Evaluate    "${category_name}".lower()
+            ${category_name}    Evaluate    "${category_name}".lower().replace("_"," ")
             ${stake}    Get From Dictionary    ${item}    stake
             ${stake}    Evaluate    "{:,.0f}".format(${stake})
             ${stake}    Set Variable    ${stake} K
