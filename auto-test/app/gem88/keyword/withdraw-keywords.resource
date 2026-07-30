@@ -15,14 +15,21 @@ Assert Withdraw Correct
     ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
     ${content_api_bank}    Get Content Of API Bank    ${response}
     ${json}    Convert String To Json    ${content_api_bank}
-    ${rolling}    Get Value From Json    ${json}    $.data.rolling    
 
-    IF    ${rolling}[0]>0 or ${rolling}==[]
+    ${exist}    Run Keyword And Return Status    Dictionary Should Contain Key    ${json['data']}    rolling
+    IF    ${exist}
+        ${rolling}    Get Value From Json    ${json}    $.data.rolling
+        ${rolling}    Set Variable    ${rolling}[0]
+    ELSE
+        ${rolling}    Set Variable    0
+    END
+
+    IF    ${rolling}>0
         # usser bi dinh rolling
-        #Get Text    body    contains    Vui lòng hoàn tất để rút tiền.
-        Get Text    body    contains    Hoàn thành
-        Get Text    body    contains    tổng cược yêu cầu
-        Get Text    body    contains    để rút tiền.
+        Get Text    body    contains    Vui lòng hoàn tất để rút tiền.
+        #Get Text    body    contains    Hoàn thành
+        #Get Text    body    contains    tổng cược yêu cầu
+        #Get Text    body    contains    để rút tiền.
     ELSE
         #check phan usser co bank chinh chu hay khong
         ${has_bank_cc}    Check User Has Any Bank Chinh Chu
