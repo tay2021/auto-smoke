@@ -8,7 +8,7 @@ ${GL_GEM88_URL}                   https://${GL_GEM88_DOMAIN}/
 ${GL_GEM88_GATEWAY_URL}           https://${GL_GEM88_DOMAIN}/gw/api/v2/
 
 # Test Data
-${VALID_USERNAME}            taygem001
+${VALID_USERNAME}            taygem8888
 #taycc01
 #taygem001   -- tai khoan nay dung test km hoan tra
 #taykhuyenmai100   - tai khaon nay dung test km 100$%
