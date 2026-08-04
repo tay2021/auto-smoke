@@ -20,13 +20,13 @@ Get Content Of Api Profile
 
 Get Profile Information Detail
     [Arguments]    ${p_api_content_profile}
-    ${json}    Convert String To Json    ${p_api_content_profile}
-    ${username}    Get Value From Json    ${json}    $..username
-    ${fullname}    Get Value From Json    ${json}    $..fullname
-    ${email}    Get Value From Json    ${json}    $..email
-    ${tele_chat_id}    Get Value From Json    ${json}    $..tele_chat_id
-    ${phone}    Get Value From Json    ${json}    $..phone
-    &{dict}    Create Dictionary    username=${username}[0]    fullname=${fullname}[0]    email=${email}[0]    tele_chat_id=${tele_chat_id}[0]    phone=${phone}[0]
+    ${json}    Evaluate    json.loads('''${p_api_content_profile}''')    modules=json
+    ${username}    Get From Dictionary    ${json["data"]}    username
+    ${fullname}    Get From Dictionary    ${json["data"]}    fullname
+    ${email}    Get From Dictionary    ${json["data"]}    email    default=EMPTY
+    ${tele_chat_id}    Get From Dictionary    ${json["data"]}    tele_chat_id
+    ${phone}    Get From Dictionary    ${json["data"]}    phone
+    &{dict}    Create Dictionary    username=${username}    fullname=${fullname}    email=${email}    tele_chat_id=${tele_chat_id}    phone=${phone}
     RETURN    ${dict}
 
 Send GET Request To Get LSGD Of User

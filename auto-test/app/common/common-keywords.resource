@@ -1,5 +1,5 @@
 *** Settings ***
-Library    Browser
+Library    Browser    timeout=15s
 Resource    ../variable.resource
 Library    Collections
 Library    BuiltIn
