@@ -1,5 +1,4 @@
 *** Settings ***
-Resource    ../page/page-header.resource
 Resource    ../page/page-change-password.resource
 Resource    ../../common/common-keywords.resource
 

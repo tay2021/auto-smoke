@@ -1,3 +1,5 @@
+*** Settings ***
+Resource    ../../import.resource
 
 
 *** Keywords ***

@@ -1,3 +1,5 @@
+*** Settings ***
+Resource    ../../import.resource
 
 *** Variables ***
 ${btn_nap_tien_ngay_on_lsdg_page}    //div[contains(@class,'bg-account-page')]//div[@class='text-center']/following-sibling::div//button        

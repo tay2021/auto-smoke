@@ -1,3 +1,6 @@
+*** Settings ***
+Resource    ../../import.resource
+
 
 *** Variables ***
 ${txtbox_username}    //input[@name='username']

@@ -1,3 +1,5 @@
+*** Settings ***
+Resource    ../../import.resource
 
 *** Variables ***
 ${btn_dang_nhap_header}                  (//button[@id='open-login-modal'])[1]

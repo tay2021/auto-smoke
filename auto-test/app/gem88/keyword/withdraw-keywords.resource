@@ -1,7 +1,6 @@
 *** Settings ***
-Resource    ../page/page-header.resource
 Resource    ../api-keywords/user-api-request.resource
-Library    String
+
 
 
 

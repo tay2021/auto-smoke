@@ -1,11 +1,10 @@
 *** Settings ***
-Resource    ../page/page-header.resource
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-detail-lsc.resource
 Resource    ../page/page-lsc.resource
 Library     ../../utils/utils-lib.py
-Library     String
 
 
 

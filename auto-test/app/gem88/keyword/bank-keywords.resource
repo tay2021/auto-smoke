@@ -1,5 +1,4 @@
 *** Settings ***
-Resource    ../page/page-header.resource
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-bank.resource
 Resource    ../../common/common-keywords.resource

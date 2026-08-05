@@ -1,5 +1,5 @@
 *** Settings ***
-Library    Browser
+Resource    ../../import.resource
 
 *** Keywords ***
 Input Username On Model Register
