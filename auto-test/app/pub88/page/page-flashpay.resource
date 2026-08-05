@@ -1,8 +1,6 @@
 *** Settings ***
-Library    Browser    timeout=15s
+Resource    ../../import.resource
 
-
-*** Variables ***
 
 
 *** Keywords ***

@@ -2,7 +2,6 @@
 Resource    ../keyword/login-keywords.resource
 Resource    ../pub88-variable.resource
 Resource    ../../common/common-keywords.resource
-Resource    ../api-keywords/user-api-request.resource
 Resource    ../keyword/user-profile-keywords.resource
 
 

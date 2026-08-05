@@ -1,8 +1,5 @@
 *** Settings ***
-Library    Browser
-
-
-*** Variables ***
+Resource    ../../import.resource
 
 
 *** Keywords ***
