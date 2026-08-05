@@ -1,11 +1,10 @@
 *** Settings ***
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
 Resource    ../page/page-header.resource
 Resource    ../page/page-model-register.resource
-Resource    ../api-keywords/promotion-api-request.resource
-Library     OperatingSystem
 
 
 

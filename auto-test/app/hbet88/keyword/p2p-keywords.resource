@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../page/page-header.resource
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-p2p.resource
 

@@ -1,10 +1,8 @@
 *** Settings ***
-Resource    ../page/page-header.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../import.resource
 Resource    ../page/page-deposit.resource
 Resource    ../page/page-the-cao.resource
 Resource    ../page/page-flashpay.resource
-Library    String
 
 
 

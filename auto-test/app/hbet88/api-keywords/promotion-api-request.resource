@@ -1,8 +1,7 @@
 *** Settings ***
+Resource    ../../import.resource
 Resource    ../../common/common-api-keywords.resource
 Resource    ../../variable.resource
-Library    JSONLibrary
-Library    DateTime
 
 
 *** Keywords ***
