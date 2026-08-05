@@ -1,8 +1,8 @@
 *** Settings ***
 Resource    ../../common/common-api-keywords.resource
 Resource    ../../variable.resource
-Library    JSONLibrary
-Library    DateTime
+Resource    ../../import.resource
+
 
 
 *** Keywords ***
@@ -17,4 +17,3 @@ Get Content Of Api Lucky Wheel V2 Promotion
     [Arguments]    ${p_api_response}
     ${content}    Get Response Content Of Api Request    ${p_api_response}
     RETURN    ${content}
-

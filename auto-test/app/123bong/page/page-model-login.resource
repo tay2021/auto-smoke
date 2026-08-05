@@ -1,10 +1,10 @@
+*** Settings ***
+Resource    ../../import.resource
 
 *** Variables ***
 ${txtbox_username}    //input[@id='username-login-input']
 ${txtbox_password}    //input[@id='password-login-input']
 ${btn_dangnhap}    //span[text()='Đăng nhập']/..
-
-
 ${lbel_LoginSuccessfully}    //*[text()='Đăng nhập thành công']
 
 

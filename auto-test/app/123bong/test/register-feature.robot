@@ -1,7 +1,6 @@
 *** Settings ***
 Resource    ../keyword/login-keywords.resource
 Resource    ../123bong-variable.resource
-Library    OperatingSystem
 Test Teardown    Close Browser And Terminate Test Running
 
 

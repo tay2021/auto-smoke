@@ -1,8 +1,7 @@
 *** Settings ***
-Resource    ../page/page-header.resource
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-lsgd.resource
-Resource    ../page/page-detail-lsgd.resource
 Resource    ../api-keywords/user-api-request.resource
 Library     ../../utils/utils-lib.py
 
