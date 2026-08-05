@@ -1,11 +1,11 @@
 *** Settings ***
-Library    DateTime
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-daily-commission.resource
 Resource    ../api-keywords/daily-tongquan-api-request.resource
 
 
-*** Keyword ***
+*** Keywords ***
 Go To Page Doanh So Dai Ly
     Go To    ${GL_LU88_DAILY_URL}commission
     

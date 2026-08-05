@@ -1,4 +1,5 @@
 *** Settings ***
+Resource    ../../import.resource
 Resource    ../page/page-header.resource
 Resource    ../page/page-gift-code.resource
 Resource    ../../common/common-keywords.resource

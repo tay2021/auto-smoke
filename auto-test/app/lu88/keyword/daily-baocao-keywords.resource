@@ -1,5 +1,5 @@
 *** Settings ***
-Library    DateTime
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-daily-quanlyhoivien.resource
 Resource    ../page/page-daily-quanlydaily.resource
@@ -7,7 +7,7 @@ Resource    ../api-keywords/daily-baocao-api-request.resource
 
 
 
-*** Keyword ***
+*** Keywords ***
 Go To Page Bao Cao Quan Ly Hoi Vien
     Go To    ${GL_LU88_DAILY_URL}revenue-by-user
 

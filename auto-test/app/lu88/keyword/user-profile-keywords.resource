@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../page/page-header.resource
+Resource    ../../import.resource
 Resource    ../page/page-profile-information.resource
 Resource    ../api-keywords/user-api-request.resource
 

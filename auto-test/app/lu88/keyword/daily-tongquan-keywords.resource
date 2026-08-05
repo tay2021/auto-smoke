@@ -1,11 +1,11 @@
 *** Settings ***
-Library    DateTime
+Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-daily-tongquan.resource
 Resource    ../api-keywords/daily-tongquan-api-request.resource
 
 
-*** Keyword ***
+*** Keywords ***
 Assert Tong Quan Dai Ly Trong Vong 30 Ngay Correct
     Click Span 30 Ngay On Tong Quan Page
     Wait For Load State    networkidle
