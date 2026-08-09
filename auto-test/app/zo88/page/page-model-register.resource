@@ -1,5 +1,5 @@
 *** Settings ***
-Library    Browser
+Resource    ../../import.resource
 
 *** Keywords ***
 Input Username On Model Register
@@ -21,6 +21,6 @@ Input Phone Number On Model Register
     Fill Text    ${locator}    ${p_phone_number}
 
 Click Button Register On Model Register
-    ${locator}    Set Variable    //button[text()='Đăng ký']
+    ${locator}    Set Variable    //div[@id='login-modal-container']//button[@type='submit']
     Wait For Elements State    ${locator}    visible
     Click    ${locator}

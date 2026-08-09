@@ -4,7 +4,7 @@ Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
 Resource    ../page/page-header.resource
 Resource    ../page/page-model-register.resource
-Library     OperatingSystem
+Resource    ../../import.resource
 
 
 
@@ -46,5 +46,12 @@ Register An Zo88 Account
 
 Assert Register An Account Successfully
     [Arguments]    ${p_expected_username}
-    ${exist}    Check Element Exists On Page    //*[contains(text(),'Chào mừng ${p_expected_username}')]
+    ${exist}    Check Element Exists On Page    //img[@alt='register-success']
     Should Be True    ${exist}
+    Get Text    body    contains    CHÀO MỪNG BẠN ĐẾN VỚI
+    Get Text    body    contains    Đảm bảo 100%, Uy tín & Chất lượng
+    Get Text    body    contains    Nạp/Rút nhanh, Hoàn trả cao & ưu đãi tốt.
+    Get Text    body    contains    Đảm bảo tiền nạp:
+    Get Text    body    contains    Bồi thường 100%
+
+

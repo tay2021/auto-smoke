@@ -3,7 +3,7 @@ Documentation     Variables for Zo88 tests
 
 *** Variables ***
 # Application URLs
-${GL_ZO88_DOMAIN}                zo88.fan
+${GL_ZO88_DOMAIN}                zo88.law
 ${GL_ZO88_URL}                   https://${GL_ZO88_DOMAIN}/
 ${GL_ZO88_GATEWAY_URL}           https://${GL_ZO88_DOMAIN}/gw/api/v2/
 
@@ -17,4 +17,5 @@ ${VALID_PASSWORD}            123456
 
 #${VALID_USERNAME}            taynewzo    #tk km 100%
 #${VALID_PASSWORD}            123456
+#${VALID_USERNAME}            tayzoht
 

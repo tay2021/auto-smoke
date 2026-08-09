@@ -2,6 +2,7 @@
 Resource    ../page/page-header.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-p2p.resource
+Resource    ../../import.resource
 
 
 

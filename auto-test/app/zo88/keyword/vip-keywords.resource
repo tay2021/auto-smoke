@@ -1,8 +1,7 @@
 *** Settings ***
 Resource    ../page/page-header.resource
 Resource    ../api-keywords/user-api-request.resource
-Resource    ../../common/common-keywords.resource
-Resource    ../page/page-vip.resource
+Resource    ../../import.resource
 
 
 

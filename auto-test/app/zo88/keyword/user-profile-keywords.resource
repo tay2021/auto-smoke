@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    ../page/page-header.resource
-Resource    ../page/page-profile-information.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../../import.resource
 
 
 

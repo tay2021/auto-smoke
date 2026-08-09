@@ -3,8 +3,8 @@ Resource    ../page/page-header.resource
 Resource    ../api-keywords/user-api-request.resource   
 Resource    ../page/page-account-promotion.resource
 Resource    ../../common/common-keywords.resource
-Library     String
 Library     ../../utils/utils-lib.py
+Resource    ../../import.resource
 
 
 
