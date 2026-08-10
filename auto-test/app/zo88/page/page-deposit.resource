@@ -18,7 +18,7 @@ Click On Tab Nap Tien The Cao On Deposit Page
 
 
 Get Attribute Src Of Locator Ma QR Crypto On Deposit Page
-    ${locator}    Set Variable    (//img[contains(@alt,'data:image/png;base64')])[1]
+    ${locator}    Set Variable    (//img[contains(@alt,'QR Code')])[1]
     ${value}    Get Attribute    ${locator}    src
     RETURN    ${value}
 

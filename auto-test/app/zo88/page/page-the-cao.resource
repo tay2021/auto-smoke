@@ -7,9 +7,9 @@ Resource    ../../import.resource
 
 *** Keywords ***
 Select Nha Mang On Deposit The Cao Page
-    [Documentation]    viettel: 1, mobifone: 2, vinaphone: 3, zing: 4, vietnammobile: 5. Chi nhập số 
-    [Arguments]    ${p_operator}
-    ${locator}    Set Variable    //label[text()='Chọn Nhà mạng']/following-sibling::div[1]/div[1]/div[${p_operator}]
+    [Documentation]    p_operator_name sẽ là 1 trong các giá trị sau: VIETTEL, MOBIFONE, VINAPHONE, ZING, VIETNAMOBILE
+    [Arguments]    ${p_operator_name}
+    ${locator}    Set Variable    //button/img[@alt='${p_operator_name}']
     Wait For Elements State    ${locator}   visible
     Click    ${locator}
     
@@ -27,12 +27,12 @@ Input PIN The Cao On Deposit The Cao Page
 
 Select Menh Gia The Cao On Deposit The Cao Page
     [Arguments]    ${p_menh_gia}
-    ${locator}    Set Variable    ((//div[text()='Mệnh giá nạp'])[1]/following-sibling::div//div[contains(text(),'${p_menh_gia}')])[1]
+    ${locator}    Set Variable    //div[contains(@class,'grid grid-cols-3')]/button[text()='${p_menh_gia}']
     Wait For Elements State    ${locator}    visible
     Click    ${locator}
 
 Click Button Nap Tien On Deposit The Cao Page
-    ${locator}    Set Variable    (//button[text()='NẠP TIỀN'])[1]
+    ${locator}    Set Variable    //button[text()='NẠP TIỀN']
     Wait For Elements State    ${locator}    visible
     Click    ${locator}
 

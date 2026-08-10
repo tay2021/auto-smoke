@@ -1,5 +1,5 @@
 *** Settings ***
-Library    Browser    timeout=30s
+Library    Browser    timeout=15s
 Library    String
 Library    OperatingSystem
 Library    JSONLibrary

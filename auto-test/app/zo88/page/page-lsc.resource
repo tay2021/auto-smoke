@@ -9,7 +9,7 @@ ${btn_nap_tien_ngay_on_lsdg_page}    //div[contains(@class,'bg-account-page')]//
 
 *** Keywords ***
 Get Locator Lich Su Cuoc Trong On LSC Page
-    ${locator}    Set Variable    (//div[text()='Bạn không có phát sinh lịch sử cược.'])[1]
+    ${locator}    Set Variable    (//div[text()='Bạn chưa từng phát sinh lịch sử cược.'])[1]
     RETURN    ${locator}
 
 Get Value ID In LSC Detail Page

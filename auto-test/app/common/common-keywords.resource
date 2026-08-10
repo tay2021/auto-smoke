@@ -75,3 +75,7 @@ Wait And Get Value Of Element
     Wait For Elements State    ${p_element}    visible
     ${value}    Get Text    ${p_element}
     RETURN    ${value}
+    
+Wait For Page Contains A Text
+    [Arguments]    ${p_selector}    ${p_text}
+    Wait For Condition    Text    ${p_selector}    contains     ${p_text}    timeout=5s

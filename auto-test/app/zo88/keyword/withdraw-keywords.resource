@@ -34,6 +34,7 @@ Assert Withdraw Correct
         END
 
         Click On Button Rut Tien On Withdraw Page
+        Click On Button Xac Nhan Rut On Withdraw Page
         Get Text    body    contains    RÚT TIỀN THÀNH CÔNG
     ELSE
         IF    ${rolling}[0]>0
@@ -63,16 +64,18 @@ Input Amount And Phone Number On Withdraw Page
     ${locator_amount}    Set Variable    //label[text()='Nhập số tiền cần rút']/preceding-sibling::input
     Wait For Elements State    ${locator_amount}    visible
     Fill Text    ${locator_amount}    ${p_amount}
-    ${locator_sodt}    Set Variable    //label[text()='Xác nhận số điện thoại']/preceding-sibling::input
-    Wait For Elements State    ${locator_sodt}    visible
-    Type Text    ${locator_sodt}    ${p_phone}    delay=0.5
-    Sleep    2s
-    Keyboard Key    press    Tab
+
 
 Click On Button Rut Tien On Withdraw Page
-    ${locator}    Set Variable    //button[text()='RÚT TIỀN']
+    ${locator}    Set Variable    //label[text()='Nhập số tiền cần rút']//ancestor::form/div[2]/div[2]/button
     Wait For Elements State    ${locator}    visible
     Click    ${locator}
+
+Click On Button Xac Nhan Rut On Withdraw Page
+    ${locator}    Set Variable    //button[text()='Xác nhận rút']
+    Wait For Elements State    ${locator}    visible
+    Click    ${locator}
+
     
 Check User Has Any Bank Chinh Chu
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
