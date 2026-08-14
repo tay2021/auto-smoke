@@ -15,7 +15,10 @@ Get Label Locator Tham Gia Khuyen Mai Hoan Tra On Promotion Page
     RETURN    ${locator}
     
 Get Value Of Total Stake On Promotion Page
-    ${value}    Get Text    //span[text()='Tiền cược']/following-sibling::span
+    ${locator}    Set Variable    //span[text()='Tiền cược']/following-sibling::span
+    Wait For Elements State    ${locator}    visible
+    Sleep    1s
+    ${value}    Get Text    ${locator}
     RETURN    ${value}
 
 Get Value Of Total Commission Cashback On Promotion Page

@@ -42,12 +42,13 @@ Assert Promotion Commission Of User
     ${expected_total_stake}    Get Value From Json    ${json}    $.data.stake
     ${expected_total_stake}=    Evaluate    "{:,}".format($expected_total_stake[0])
     ${expected_commission}    Get Value From Json    ${json}    $.data.commission
-    ${expected_commission}    Evaluate    int(${expected_commission}[0])
-    ${$expected_commission}=    Evaluate    "{:,}".format($expected_commission)
+    ${expected_commission}    Evaluate    round(${expected_commission}[0])
+    #${$expected_commission}=    Evaluate    "{:,}".format($expected_commission)
     ${actual_total_stake}    Get Value Of Total Stake On Promotion Page
     ${actual_total_cashback}    Get Value Of Total Commission Cashback On Promotion Page
     ${actual_total_stake}    Remove String    ${actual_total_stake}    ${SPACE}    K
     ${actual_total_cashback}    Remove String    ${actual_total_cashback}    ${SPACE}    K
+    ${actual_total_cashback}=    Evaluate    round(${actual_total_cashback})
     Should Be True    '${expected_total_stake}'=='${actual_total_stake}'
     Should Be True    '${expected_commission}'=='${actual_total_cashback}'
 
