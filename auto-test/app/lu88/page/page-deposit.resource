@@ -7,7 +7,7 @@ Resource    ../../import.resource
 
 *** Keywords ***
 Click On Tab Nap Tien Crypto On Deposit Page
-    ${tab_crypto}    Set Variable    //div[text()='Crypto']
+    ${tab_crypto}    Set Variable    //span[contains(text(),'Crypto')]
     Wait For Elements State    ${tab_crypto}    visible
     Click    ${tab_crypto}
 

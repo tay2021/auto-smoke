@@ -30,7 +30,7 @@ As a user I want to deposit by the cao correct
     Assert Create Phieu Nap By The Cao Correct
 
 As a user I want to deposit by flash pay correct
-    [Tags]    smoke    deposit-card
+    [Tags]    smoke    deposit-flash
     Open Lu88 Site And Maximize Window    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${VALID_USERNAME}    ${VALID_PASSWORD}
