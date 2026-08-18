@@ -1,7 +1,8 @@
 *** Settings ***
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-header.resource
-
+Resource    ../page/page-withdraw-bank.resource
+Resource    ../page/page-withdraw-mobi.resource
 
 
 
@@ -43,28 +44,22 @@ Assert Withdraw Correct
             Select Bank And Input Bank Info On Withdraw Page    ${ten_tk}    ${so_tk}
             Input Amount And Phone Number On Withdraw Page    200    11111
         END
-        Click On Button Rut Tien On Withdraw Page
+        Click On The Button Rut Tien On Withdraw Bank Page
         Get Text    body    contains    RÚT TIỀN THÀNH CÔNG
     END
 
 Select Bank And Input Bank Info On Withdraw Page
     [Arguments]    ${p_ten_tk}    ${p_so_tk}
-    Click    //*[contains(@*[local-name()='href'], 'arrow-down')]
-    Click    //*[text()='Vietcombank']
-    Fill Text    //*[text()='Tên chủ tài khoản']/preceding-sibling::input    ${p_ten_tk}
-    Fill Text    //*[text()='Số tài khoản']/preceding-sibling::input    ${p_so_tk}
+    Select Bank Name From Dropdownlist On Withdraw Bank Page    Vietcombank
+    Set Value On The TextBox Ten Tai Khoan On Withdraw Bank Page    ${p_ten_tk}
+    Set Value On The TextBox So Tai Khoan On Withdraw Bank Page    ${p_so_tk}
+
 
 Input Amount And Phone Number On Withdraw Page
     [Arguments]    ${p_amount}    ${p_phone}
-    Fill Text    //*[text()='Nhập số tiền cần rút']/preceding-sibling::input    ${p_amount}
-    ${locator_sodt}    Set Variable    //*[text()='Xác nhận số điện thoại']/preceding-sibling::input
-    Wait For Elements State    ${locator_sodt}    visible
-    Type Text    ${locator_sodt}    ${p_phone}    delay=0.5
-    Sleep    2s
-    Keyboard Key    press    Tab
+    Set Value On TextBox Amount On Withdraw Bank Page    ${p_amount}
+    Set Value On TextBox So Dien Thoai On Withdraw Bank Page    ${p_phone}
 
-Click On Button Rut Tien On Withdraw Page
-    Click    //button[text()='RÚT TIỀN']
     
 Check User Has Any Bank Chinh Chu
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -87,4 +82,24 @@ Check User Has Any Bank Chinh Chu
         END
     END
     RETURN    ${flag_bank_cc}
+    
+    
+Withdraw By Mobi Card
+    [Arguments]    ${p_operator}    ${p_menh_gia}    ${p_confirm_phone}    ${p_card_quantity}
+    Click On The Tab The Cao On The Withdraw Mobi Page
+    Select Nha Mang On The Withdraw Mobi Page    ${p_operator}
+    Select Menh Gia The Cao On The Withdraw Mobi Page    ${p_menh_gia}
+    Set Value For TextBox Confirm Phone Number On Withdraw Mobi Page    ${p_confirm_phone}
+    Set Value For TextBox Number Of Card On Withdraw Mobi Page    ${p_card_quantity}
+    Click On The Button Rut Tien On The Withdraw Mobi Page
+
+Assert Withdraw By Mobi Card Successfully
+    ${element}=    Get Element Rut Tien Thanh Cong Qua The Cao On The Withdraw Mobi Page
+    ${exits}=    Check Element Exists On Page    ${element}
+    Should Be True    ${exits}
+
+    
+
+
+
    
