@@ -8,7 +8,7 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check P2p transaction correct
     [Tags]    smoke    p2p
-    Open Gem88 Site And Maximize Window    ${GL_GEM88_URL}
+    Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully

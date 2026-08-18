@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 *** Variables ***
 ${btn_nap_tien_ngay_on_lsdg_page}    //div[contains(@class,'bg-account-page')]//div[@class='text-center']/following-sibling::div//button        
@@ -15,3 +16,5 @@ Click On A Transaction On LSC Page
     Click    //*[@class='root-account-content-wrapper']//*[contains(@class,'flex flex-col px-3 py-4')]/*[contains(normalize-space(),'${p_id_transaction}')]
     
 
+Click Button Cuoc Ngay On LSC Page
+    Wait For Element State And Click On It    (//button[text()='CƯỢC NGAY'])[2]

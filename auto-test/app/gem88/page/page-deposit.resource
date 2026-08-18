@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 
 *** Variables ***
@@ -7,26 +8,15 @@ Resource    ../../import.resource
 
 *** Keywords ***
 Click On Tab Nap Tien Crypto On Deposit Page
-    ${tab_crypto}    Set Variable    (//a[@href='/account/deposit/crypto'])[1]
-    Wait For Elements State    ${tab_crypto}    visible
-    Click    ${tab_crypto}
+    Wait For Element State And Click On It    //img[@alt='Crypto']
 
 Click On Tab Nap Tien The Cao On Deposit Page
-    ${tab_the_cao}    Set Variable    (//a[@href='/account/deposit/scratch-card'])[1]
-    Wait For Elements State    ${tab_the_cao}    visible
-    Click    ${tab_the_cao}
+    Wait For Element State And Click On It    //img[@alt='Thẻ cào']
 
 
 Get Attribute Src Of Locator Ma QR Crypto On Deposit Page
-    ${locator}    Set Variable    //img[contains(@alt,'data:image/png;base64')]
-    ${value}    Get Attribute    ${locator}    src
+    ${value}    Wait For Element State And Get Attribute    //img[contains(@alt,'data:image/png;base64')]    src
     RETURN    ${value}
 
 Click On Tab Nap Tien QR Code On Deposit Page
-    ${tab_the_cao}    Set Variable    (//span[text()='QR Code'])[1]
-    Wait For Elements State    ${tab_the_cao}    visible
-    Click    ${tab_the_cao}
-    
-
-
-
+    Wait For Element State And Click On It    //img[@alt='QR Code']

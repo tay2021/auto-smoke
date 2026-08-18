@@ -1,9 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
-
-
-*** Variables ***
-
+Resource    ../../common/common-keywords.resource
 
 *** Keywords ***
 Select Random Kenh Nap On Flash Page
@@ -17,8 +14,8 @@ Click On Button Tao Ma QR On Flash Page
     Click    //button[text()='Tạo mã QR Code']
     
 Get Locator Attribute Src Ma QR Flash Pay On Flash Page
-    Wait For Elements State    //img[contains(@alt,'data:image/png')]    visible
-    ${value}    Get Attribute    //img[contains(@alt,'data:image/png')]    src
+    ${locator}    Set Variable    //img[@id='codepay-qr']
+    Wait For Elements State    ${locator}    visible
+    Sleep    1s
+    ${value}    Get Attribute    ${locator}    src
     RETURN    ${value}
-
-

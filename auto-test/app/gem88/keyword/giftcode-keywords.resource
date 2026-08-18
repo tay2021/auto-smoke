@@ -8,7 +8,6 @@ Resource    ../../common/common-keywords.resource
 
 *** Keywords ***
 Go To Gift Code Page
-    Go To    ${GL_GEM88_URL}
     Click On The Avatar Image On Header Page
     Click On The Avatar Image Gift Code On Header Page
 

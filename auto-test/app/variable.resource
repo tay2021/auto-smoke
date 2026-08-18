@@ -1,7 +1,7 @@
 *** Variables ***
 # Browser Configuration
 ${GL_BROWSER}                   chromium
-${GL_HEADLESS}                  ${True}
+${GL_HEADLESS}                  ${False}
 ${GL_DEFAULT_TIMEOUT}           30000
 
 
@@ -22,6 +22,11 @@ ${URI_VIP_PROGRAM}           user/vip-program/user
 
 # api promotion
 ${URI_LUCKY_WHEEL_V2}        lucky-wheel-v2/user-data
+
+
+# api payment
+${URI_DEPOSIT_CURRENCY}    payment/crypto/deposit-currency
+${URI_NETWORK_ADDRESS}     payment/crypto/address
 
 
 

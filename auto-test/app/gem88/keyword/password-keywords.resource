@@ -1,17 +1,16 @@
 *** Settings ***
 Resource    ../page/page-change-password.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-header.resource
 
 
 
 
 *** Keywords ***
 Go to Change Password Page
-    Go To    ${GL_GEM88_URL}account/profile
-    ${locator}    Set Variable    (//button[text()='Đổi mật khẩu'])[1]
-    Wait For Elements State    ${locator}    visible
-    Click    ${locator}
-    
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image Doi Mat Khau On Header Page
+
     
 Change Password User
     [Arguments]    ${p_current_pass}    ${p_new_pass}

@@ -2,12 +2,14 @@
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-bank.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-header.resource
 
 
 
 *** Keywords ***
 Go To Quan Ly Bank Page
-    Go To    ${GL_GEM88_URL}account/banking
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image Quan Ly Ngan Hang On Header Page
 
 Assert Quan Ly Bank Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

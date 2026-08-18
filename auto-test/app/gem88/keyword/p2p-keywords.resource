@@ -1,6 +1,7 @@
 *** Settings ***
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-p2p.resource
+Resource    ../page/page-header.resource
 
 
 
@@ -8,7 +9,8 @@ Resource    ../page/page-p2p.resource
 
 *** Keywords ***
 Go To Giao Dich P2p Page
-    Go To    ${GL_GEM88_URL}account/p2p/buy
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image Giao Dich P2p On Header Page
 
 Assert Page Giao Dich P2p Show Correct
     Close Pop Up Chao Mung Den Voi P2p

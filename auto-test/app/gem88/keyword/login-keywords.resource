@@ -15,6 +15,10 @@ Open Gem88 site and maximize window
     [Arguments]    ${p_url}
     Open Site and maximize window    ${p_url}
 
+Open Gem88 site on device
+    [Arguments]    ${p_url}    ${p_device_type}=iPhone 17 Pro Max
+    Open Site On Device    ${p_url}    ${p_device_type}
+
 Go To Login Page
     Go To    ${GL_GEM88_URL}?popup=login
 
@@ -52,8 +56,6 @@ Close Lucky Wheel Notification If Shown
 Open Register Form
     [Arguments]    ${p_url_form_register}
     Go to    ${p_url_form_register}
-    Wait For Elements State    //div[text()='Tạo tài khoản ngay']    visible
-    Click    //div[text()='Tạo tài khoản ngay']
 
 Register An Gem88 Account
     [Arguments]    ${p_username}    ${p_password}    ${p_phone_number}

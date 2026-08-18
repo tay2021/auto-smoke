@@ -11,7 +11,7 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check claim gift code correct
     [Tags]    smoke    gift-code
-    Open Gem88 Site And Maximize Window    ${GL_GEM88_URL}
+    Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully

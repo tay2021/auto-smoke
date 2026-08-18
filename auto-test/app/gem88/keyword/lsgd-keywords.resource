@@ -3,14 +3,17 @@ Resource    ../../common/common-keywords.resource
 Resource    ../page/page-lsgd.resource
 Resource    ../page/page-detail-lsgd.resource
 Resource    ../api-keywords/user-api-request.resource
+Resource    ../page/page-header.resource
 Library     ../../utils/utils-lib.py
+
 
 
 
 
 *** Keywords ***
 Go to Lich Su Giao Gich Page
-    Go To    ${GL_GEM88_URL}account/history/transaction
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image Lich Su Giao Dich On Header Page
     
 Assert LSGD Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -26,6 +29,10 @@ Assert LSGD Page Show Correct
         ${locator}    Get Locator Nap Tien Ngay On LSGD Page
         ${exist}    Check Element Exists On Page    ${locator}
         Should Be True    ${exist}
+        Click On Button Giao Dich Ngay On LSGD Page
+        Sleep    0.5s
+        ${url}    Get Url
+        Should Be True    "${url}"=="${GL_GEM88_URL}account/deposit/qrcode"
     ELSE
         ${arr_lsgd}    Set Variable    ${item}[0]
         # nếu tổng số lsgd > 3 thì chỉ chech chi tiết 3 record đầu thôi.

@@ -3,14 +3,17 @@ Resource    ../../import.resource
 Resource    ../api-keywords/user-api-request.resource   
 Resource    ../page/page-account-promotion.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-header.resource
 Library     ../../utils/utils-lib.py
+
 
 
 
 
 *** Keywords ***
 Go To User Promotion Page
-    Go To    ${GL_GEM88_URL}account/promotion
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image Promotion On Header Page
     
 Assert User Promotion Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -29,10 +32,6 @@ Assert User Promotion Page Show Correct
     ELSE IF    ${code}==400
         Assert User Without Promotion
     END
-        
-       
-    
-    
 
 Assert Promotion Commission Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

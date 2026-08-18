@@ -1,36 +1,28 @@
 *** Settings ***
 Resource    ../../import.resource
-
-
-*** Variables ***
-#${btn_dang_nhap}    (//button[@id='open-login-modal'])[1]
-${img_avatar_profile}                    //img[@alt='avatar']
-${img_avatar_profile_info}               //img[@alt='Thông tin tài khoản']
-${txt_username_profile}                  css=#profile-form:nth-child(2) input[name='username']
-${txt_fullname_profile}                 .root-account-content-wrapper form#profile-form:first-child input[name=fullname]
-${txt_phone_profile}                    .root-account-content-wrapper form#verify-form:first-child input[name='phone']
-${txt_telegram_profile}                 .root-account-content-wrapper form#verify-form:first-child input[name='telegram']
-${txt_email_profile}                     .root-account-content-wrapper form#profile-form:first-child input[name=email]
-
+Resource    ../../common/common-keywords.resource
 
 
 *** Keywords ***
-Get User Name Value On Profile Page
-    ${value}    Get Attribute    ${txt_username_profile}    value
+Get User Name Value On Profile Page 
+    ${value}    Wait For Element State And Get Attribute    (//input[@name='username'])[3]    value
     RETURN    ${value}
 
 Get Full Name Value On Profile Page
-    ${value}    Get Text    ${txt_fullname_profile}
+    ${value}    Wait For Element State And Get Attribute    (//input[@name='fullname'])[2]    value
     RETURN    ${value}
 
 Get Phone Value On Profile Page
-    ${value}    Get Text    ${txt_phone_profile}
+    ${value}    Wait For Element State And Get Attribute    (//input[@name='phone'])[2]    value
     RETURN    ${value}
 
 Get Telegram Value On Profile Page
-    ${value}    Get Text    ${txt_telegram_profile}
+    Sleep    1s
+    ${element}    Get Element    (//label[@for='telegram'])[2]/../input
+    Log    ${element}
+    ${value}    Wait For Element State And Get Attribute    (//input[@name='telegram'])[2]    value
     RETURN    ${value}
 
 Get Email Value On Profile Page
-    ${value}    Get Text    ${txt_email_profile}
+    ${value}    Wait For Element State And Get Attribute    (//input[@name='email'])[2]    value
     RETURN    ${value}

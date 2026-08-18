@@ -1,12 +1,15 @@
 *** Settings ***
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-vip.resource
+Resource    ../../common/common-keywords.resource
+Resource    ../page/page-header.resource
 
 
 
 *** Keywords ***
 Go To VIP User Page
-    Go To    ${GL_GEM88_URL}su-kien/vip-club
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image VIP On Header Page
 
 Assert VIP User Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}

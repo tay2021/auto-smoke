@@ -1,12 +1,15 @@
 *** Settings ***
 Resource    ../api-keywords/user-api-request.resource
+Resource    ../page/page-header.resource
 
 
 
 
 *** Keywords ***
 Go To Withdraw Page
-    Go To    ${GL_GEM88_URL}account/withdraw/banking
+    Click On The Avatar Image On Header Page
+    Click On The Button Rut Tien On Header Page
+
 
 Assert Withdraw Correct
     #check user co bank chinh chu hay ko
@@ -25,9 +28,9 @@ Assert Withdraw Correct
 
     IF    ${rolling}>0
         # usser bi dinh rolling
-        Get Text    body    contains    Vui lòng hoàn tất để rút tiền.
+        #Get Text    body    contains    Vui lòng hoàn tất để rút tiền.
         #Get Text    body    contains    Hoàn thành
-        #Get Text    body    contains    tổng cược yêu cầu
+        Get Text    body    contains    tổng cược yêu cầu
         #Get Text    body    contains    để rút tiền.
     ELSE
         #check phan usser co bank chinh chu hay khong

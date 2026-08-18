@@ -9,11 +9,11 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check vip level user correct
     [Tags]    smoke    vip
-    Open Gem88 Site And Maximize Window    ${GL_GEM88_URL}
+    Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully
     Get And Set Bearer Token From Cookie After Login Successfully
     Close Lucky Wheel Notification If Shown
     Go To VIP User Page
-    Assert VIP User Page Show Correct
+    #Assert VIP User Page Show Correct

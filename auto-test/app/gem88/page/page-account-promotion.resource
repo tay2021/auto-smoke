@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 
 *** Variables ***
@@ -15,22 +16,22 @@ Get Label Locator Tham Gia Khuyen Mai Hoan Tra On Promotion Page
     RETURN    ${locator}
     
 Get Value Of Total Stake On Promotion Page
-    ${value}    Get Text    (//*[contains(@class,'bg-promotion-detail')])[2]//*[text()='Số tiền cược:']/following::span[1]
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//*[contains(@class,'bg-promotion-detail')])[2]//*[text()='Số tiền cược:']/following::span[1]
+    RETURN    ${text}
 
 Get Value Of Total Commission Cashback On Promotion Page
-    ${value}    Get Text    (//*[contains(@class,'bg-promotion-detail')])[2]//*[text()='Số tiền hoàn trả:']/following::span[1]
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//*[contains(@class,'bg-promotion-detail')])[2]//*[text()='Số tiền hoàn trả:']/following::span[1]
+    RETURN    ${text}
 
 Get Value Of So Tien Da Nap Promtion 100% On Promotion Page
-    ${value}    Get Text    (//span[text()='Số tiền đã nạp:'])[2]/following-sibling::span
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//span[text()='Số tiền đã nạp:'])[2]/following-sibling::span
+    RETURN    ${text}
 
 Get Value Of So Tien Thuong Promtion 100% On Promotion Page
-    ${value}    Get Text    (//span[text()='Số tiền thưởng:'])[2]/following-sibling::span
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//span[text()='Số tiền thưởng:'])[2]/following-sibling::span
+    RETURN    ${text}
 
 Get Value Of So Tien Rolling Promtion 100% On Promotion Page
-    ${value}    Get Text    (//span[text()='Số tiền cược cần hoàn thành:'])[2]/following-sibling::span/span[2]
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//span[text()='Số tiền cược cần hoàn thành:'])[2]/following-sibling::span/span[2]
+    RETURN    ${text}
 

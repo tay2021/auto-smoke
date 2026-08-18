@@ -4,6 +4,7 @@ Resource    ../../common/common-keywords.resource
 Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-detail-lsc.resource
 Resource    ../page/page-lsc.resource
+Resource    ../page/page-header.resource
 Library     ../../utils/utils-lib.py
 
 
@@ -13,7 +14,8 @@ Library     ../../utils/utils-lib.py
 
 *** Keywords ***
 Go to Lich Su Cuoc Page
-    Go To    ${GL_GEM88_URL}account/history/bet
+    Click On The Avatar Image On Header Page
+    Click On The Avatar Image Lich Su Cuoc On Header Page
     
 Assert Lich Su Cuoc Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
@@ -26,6 +28,10 @@ Assert Lich Su Cuoc Page Show Correct
         ${locator}    Get Locator Lich Su Cuoc Trong On LSC Page
         ${exist}    Check Element Exists On Page    (${locator})[1]
         Should Be True    ${exist}
+        Click Button Cuoc Ngay On LSC Page
+        Sleep    0.5s
+        ${url}    Get Url
+        Should Be True    "${url}"=="${GL_GEM88_URL}cong-game"
     ELSE
         ${arr_lsc}    Set Variable    ${item}[0]
         # nếu tổng số lsgd > 3 thì chỉ chech chi tiết 3 record đầu thôi.
