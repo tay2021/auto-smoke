@@ -3,6 +3,7 @@ Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-header.resource
 Resource    ../page/page-withdraw-bank.resource
 Resource    ../page/page-withdraw-mobi.resource
+Resource    ../page/page-withdraw-crypto.resource
 
 
 
@@ -98,8 +99,15 @@ Assert Withdraw By Mobi Card Successfully
     ${exits}=    Check Element Exists On Page    ${element}
     Should Be True    ${exits}
 
-    
+Withdraw By Crypto
+    [Arguments]    ${p_address}    ${p_amount}    ${p_phone_number}
+    Click On The Tab Crypto On The Withdraw Crypto Page
+    Set Value On TextBox Address On The Withdraw Crypto Page    ${p_address}
+    Set Value On TextBox Amount Withdraw On The Withdraw Crypto Page    ${p_amount}
+    Set Value On TextBox Confirm Phone Number On The Withdraw Crypto Page    ${p_phone_number}
+    Click On The Button Rut Tien On The Withdraw Crypto Page
 
-
-
-   
+Assert Withdraw By Crypto Successfully
+    ${element}=    Get Element Rut Tien Thanh Cong Qua The Cao On The Withdraw Crypto Page
+    ${exits}=    Check Element Exists On Page    ${element}
+    Should Be True    ${exits}
