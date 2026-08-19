@@ -4,7 +4,7 @@ Resource    ../page/page-deposit.resource
 Resource    ../page/page-the-cao.resource
 Resource    ../page/page-flashpay.resource
 Resource    ../page/page-header.resource
-Resource    ../api-keywords/payment-api-request.resource
+Resource    ../../common/payment-api-request.resource
 Resource    ../page/page-deposit-crypto.resource
 Resource    ../../common/common-keywords.resource
 
@@ -24,8 +24,7 @@ Assert Create Phieu Nap By Crypto Correct
 
 Assert Available Crypto Networks are correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Deposit Currency For Crypto   ${bearer_token}
-    ${content_api_crypto_currency}    Get Content Of Api Deposit Currency For Crypto    ${response}
+    ${content_api_crypto_currency}    Send GET Request To Get Deposit Currency For Crypto   ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${dict}    Evaluate    json.loads('''${content_api_crypto_currency}''')    modules=json
     ${data}    Get From Dictionary    ${dict}    data
     ${len}    Get Length    ${data}
@@ -35,8 +34,7 @@ Assert Available Crypto Networks are correct
 
 Assert Crypto Network Addresses are correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Deposit Currency For Crypto   ${bearer_token}
-    ${content_api_crypto_currency}    Get Content Of Api Deposit Currency For Crypto    ${response}
+    ${content_api_crypto_currency}    Send GET Request To Get Deposit Currency For Crypto   ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${dict}    Evaluate    json.loads('''${content_api_crypto_currency}''')    modules=json
     ${data}    Get From Dictionary    ${dict}    data
     Click On Tab Nap Tien Crypto On Deposit Page
@@ -57,8 +55,7 @@ Assert Crypto Network Addresses are correct
 Get Address Base On Network
     [Arguments]    ${p_network}
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${resp}    Send GET Request To Get Address Base On Network For Crypto Deposit    ${bearer_token}    ${p_network}
-    ${content_api}    Get Content Of Api Get Address Base On Network For Crypto Deposit    ${resp}
+    ${content_api}    Send GET Request To Get Address Base On Network For Crypto Deposit    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}    ${p_network}
     ${dict}    Evaluate    json.loads('''${content_api}''')    modules=json
     ${data}    Get From Dictionary    ${dict}    data
     ${address}    Get From Dictionary    ${data}[0]    address

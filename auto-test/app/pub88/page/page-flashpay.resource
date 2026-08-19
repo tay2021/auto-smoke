@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 
 
@@ -12,9 +13,7 @@ Input So Tien On Flash Page
     Fill Text    //input[@id='amount']    ${p_amount}
     
 Click On Button Tao Ma QR On Flash Page
-    ${locator}    Set Variable    ((//div[@class='ant-tabs-content-holder']//form)[1]//*[text()='Tạo mã QR Code'])[1]
-    Wait For Elements State    ${locator}    visible
-    Click    ${locator}
+    Wait For Element State And Click On It    (//button//span[text()='Tạo mã QR Code'])[2]
     
 Get Locator Attribute Src Ma QR Flash Pay On Flash Page
     ${value}    Get Attribute    //img[@alt='qr code']    src
