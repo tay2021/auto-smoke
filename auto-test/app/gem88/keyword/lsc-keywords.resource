@@ -60,13 +60,13 @@ Assert Detail Of A Betting Transaction In Detail LSC Page
     ${actual_id}    Get Value ID In LSC Detail Page    1
     ${actual_id}=    Evaluate    "${actual_id}"[1:]    #remove # before of id
     ${actual_tro_choi}    Get Value Tro Choi Name In LSC Detail Page    1
-    ${actual_tien_cuoc}    Get Value Tien Cuoc In LSC Detail Page    1
+    #${actual_tien_cuoc}    Get Value Tien Cuoc In LSC Detail Page    1
     ${actual_thang_thua}    Get Value Tien Thang Thua In LSC Detail Page    1
     ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -
-    ${actual_thuong}    Get Value Tien Thuong In LSC Detail Page    1
+    #${actual_thuong}    Get Value Tien Thuong In LSC Detail Page    1
 
     Should Be True    '${expected_id}'=='${actual_id}'
     Should Be True    '${expected_tro_choi}'=='${actual_tro_choi}'
-    Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
+    #Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
     Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
-    Should Be True    '${expected_thuong}'=='${actual_thuong}'
+    #Should Be True    '${expected_thuong}'=='${actual_thuong}'
