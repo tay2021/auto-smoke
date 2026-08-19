@@ -15,6 +15,10 @@ Open Pub88 site and maximize window
     [Arguments]    ${p_url}
     Open Site and maximize window    ${p_url}
 
+Open Pub88 site on device
+    [Arguments]    ${p_url}    ${p_device_type}=iPhone 14 Pro Max
+    Open Site On Device    ${p_url}    ${p_device_type}
+
 
 Close Welcome Pop Up If Shown
     ${btn_close_welcome_pop_up}    Get Button Close Welcome Pop Up Element
@@ -23,9 +27,12 @@ Close Welcome Pop Up If Shown
         Click    ${btn_close_welcome_pop_up}
     END
 
+Go To Login Page
+    Go To    ${GL_PUB88_URL}?popup=login
+
 Login To Site Pub88
     [Arguments]    ${p_username}    ${p_password}
-    Click Button Dang Nhap On Header Page
+    Go To Login Page
     Input Username On Model Login    ${p_username}
     Input Password On Model Login    ${p_password}
     Keyboard Key    press    Enter

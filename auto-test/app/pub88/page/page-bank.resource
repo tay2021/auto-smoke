@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 
 
@@ -10,10 +11,13 @@ Get Div Chua Co Tai Khoan Lien Ket On Quan Ly Bank Page
 
 Get Value Of Ten Tai Khoan On Quan Ly Bank Page
     [Arguments]    ${p_index}
-    ${value}    Get Text    (//section//img)[${p_index}]/../following-sibling::div[2]
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//section//img)[${p_index}]/../following-sibling::div[2]
+    RETURN    ${text}
 
 Get Value Of So Tai Khoan On Quan Ly Bank Page
     [Arguments]    ${p_index}
-    ${value}    Get Text    (//section//img)[${p_index}]/../following-sibling::div[1]
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    (//section//img)[${p_index}]/../following-sibling::div[1]
+    RETURN    ${text}
+
+Click On The Button Add Bank On Quan Ly Bank Page
+    Wait For Element State And Click On It    //span[text()='Thêm tài khoản']
