@@ -1,7 +1,6 @@
 *** Settings ***
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-vip.resource
-Resource    ../../common/common-keywords.resource
 Resource    ../page/page-header.resource
 
 
@@ -13,8 +12,7 @@ Go To VIP User Page
 
 Assert VIP User Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get VIP Detail Of User   ${bearer_token}
-    ${content_api_vip}    Get Content Of API User VIP Detail    ${response}
+    ${content_api_vip}    Send GET Request To Get VIP Detail Of User   ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_vip}
     ${level}    Get Value From Json    ${json}    $.data[0].level
     ${accumulate_stake}    Get Value From Json    ${json}    $.data[0].accumulated_stake

@@ -32,7 +32,7 @@ As a user I want to check available network crypto deposit correct
     Assert Available Crypto Networks are correct
 
 As a user I want to check address deposit network is correct
-    [Tags]    smoke    deposit-crypto-address    temp1
+    [Tags]    smoke    deposit-crypto-address
     Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}

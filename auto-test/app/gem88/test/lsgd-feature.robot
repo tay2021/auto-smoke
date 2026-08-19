@@ -10,7 +10,7 @@ Test Teardown    Close Browser And Terminate Test Running
 
 *** Test Cases ***
 As a user I want to check Lich Su Giao Dich Show Correct
-    [Tags]    smoke    lsgd
+    [Tags]    smoke    lsgd    temp1
     Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}
@@ -19,16 +19,3 @@ As a user I want to check Lich Su Giao Dich Show Correct
     Close Lucky Wheel Notification If Shown
     Go To Lich Su Giao Gich Page
     Assert LSGD Page Show Correct
-
-
-
-
-
-
-
-
-
-    
-
-
-    

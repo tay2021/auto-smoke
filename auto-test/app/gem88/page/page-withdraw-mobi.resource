@@ -45,5 +45,4 @@ Click On The Button Rut Tien On The Withdraw Mobi Page
     Wait For Element State And Click On It    //button[text()='RÚT TIỀN']
 
 Get Element Rut Tien Thanh Cong Qua The Cao On The Withdraw Mobi Page
-    ${locate_withdraw_success}    Set Variable    //span[text()='RÚT TIỀN THÀNH CÔNG']
-    RETURN    ${locate_withdraw_success}
+    RETURN    //span[text()='RÚT TIỀN THÀNH CÔNG']

@@ -2,8 +2,8 @@
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-lsgd.resource
 Resource    ../page/page-detail-lsgd.resource
-Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-header.resource
+Resource    ../../common/user-api-request.resource
 Library     ../../utils/utils-lib.py
 
 
@@ -17,8 +17,7 @@ Go to Lich Su Giao Gich Page
     
 Assert LSGD Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get LSGD Of User   ${bearer_token}
-    ${content_api_lsgd}    Get Content Of API LSGD    ${response}
+    ${content_api_lsgd}    Send GET Request To Get LSGD Of User   ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_lsgd}
     ${item}    Get Value From Json    ${json}    $.data.items
     ${count}    Get Length    ${item}[0]

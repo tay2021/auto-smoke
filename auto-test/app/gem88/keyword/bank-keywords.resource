@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-bank.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-header.resource
@@ -13,8 +13,7 @@ Go To Quan Ly Bank Page
 
 Assert Quan Ly Bank Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Bank Of User    ${bearer_token}
-    ${content_api_bank}    Get Content Of API Bank    ${response}
+    ${content_api_bank}    Send GET Request To Get Bank Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_bank}
     ${data}    Get Value From Json    ${json}    $.data
     ${count}    Get Length    ${data}[0]
@@ -44,5 +43,4 @@ Assert Quan Ly Bank Page Show Correct
             Should Be True    '${expected_bank_account_no}'=='${actual_bank_account_no}'
             Should Be True    '${expected_is_reviewed}'=='${actual_bank_trang_thai}'
         END
-        
     END

@@ -4,7 +4,7 @@ Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
 Resource    ../page/page-model-register.resource
-Resource    ../api-keywords/promotion-api-request.resource
+Resource    ../../common/promotion-api-request.resource
 
 
 
@@ -44,9 +44,9 @@ Assert Login To Site88 Successfully
     
 Close Lucky Wheel Notification If Shown
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send POST Request To Get Lucky Wheel V2 Promotion Of User    ${bearer_token}
-    ${content_api_bank}    Get Content Of Api Lucky Wheel V2 Promotion    ${response}
-    ${json}    Convert String To Json    ${content_api_bank}
+    ${content_api}    Send POST Request To Get Lucky Wheel V2 Promotion Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
+    ${json}    Convert String To Json    ${content_api}
+    Log    ${json}
     ${remaining_turns}    Get Value From Json    ${json}    $.data.remaining_turns
     ${is_empty}=    Evaluate    len($remaining_turns) == 0
     IF    not ${is_empty}

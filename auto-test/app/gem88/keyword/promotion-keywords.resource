@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
-Resource    ../api-keywords/user-api-request.resource   
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-account-promotion.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-header.resource
@@ -17,8 +17,7 @@ Go To User Promotion Page
     
 Assert User Promotion Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
+    ${content_api_lsc}    Send GET Request To Get Promotion Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_lsc}
     ${code}    Get Value From Json    ${json}    $.code
     ${code}    Set Variable    ${code}[0]
@@ -35,8 +34,7 @@ Assert User Promotion Page Show Correct
 
 Assert Promotion Commission Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Commission Detail Of User    ${bearer_token}
-    ${content_api_promotion_detail}    Get Content Of API User Promotion Commission Detail    ${response}
+    ${content_api_promotion_detail}    Send GET Request To Get Promotion Commission Detail Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_promotion_detail}
     ${expected_total_stake}    Get Value From Json    ${json}    $.data.stake
     ${expected_total_stake}=    Evaluate    "{:,}".format($expected_total_stake[0])
@@ -53,8 +51,7 @@ Assert Promotion Commission Of User
 
 Assert Promotion Welcome Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_promotion}    Get Content Of API User Promotion    ${response}
+    ${content_api_promotion}    Send GET Request To Get Promotion Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_promotion}
     ${deposit_amount}    Get Value From Json    ${json}    $.data.deposit_amount
     ${rolling}    Get Value From Json    ${json}    $.data.rolling

@@ -1,17 +1,14 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 
 
 *** Keywords ***
 Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
-    ${locator}    Set Variable    //button[@role='combobox']
-    Wait For Element State And Click On It    ${locator}
+    Wait For Element State And Click On It    //button[@role='combobox']
     
 Get Buy Price Base On Currency And Network On Deposit Crypto Page
     [Arguments]    ${p_currency}    ${p_network}
-    ${locator}    Set Variable    (//span[normalize-space(.)='${p_currency} - ${p_network}'])[1]/following-sibling::span
-    ${text}    Wait For Element State And Get Text    ${locator}
+    ${text}    Wait For Element State And Get Text    (//span[normalize-space(.)='${p_currency} - ${p_network}'])[1]/following-sibling::span
     RETURN    ${text}
 
 Select Currency And NetWork On Deposit Crypto Page

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-header.resource
 Resource    ../page/page-withdraw-bank.resource
 Resource    ../page/page-withdraw-mobi.resource
@@ -16,10 +16,8 @@ Go To Withdraw Page
 Assert Withdraw Correct
     #check user co bank chinh chu hay ko
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_bank}    Get Content Of API Bank    ${response}
+    ${content_api_bank}    Send GET Request To Get Promotion Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_bank}
-
     ${exist}    Run Keyword And Return Status    Dictionary Should Contain Key    ${json['data']}    rolling
     IF    ${exist}
         ${rolling}    Get Value From Json    ${json}    $.data.rolling
@@ -64,8 +62,7 @@ Input Amount And Phone Number On Withdraw Page
     
 Check User Has Any Bank Chinh Chu
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Bank Of User    ${bearer_token}
-    ${content_api_bank}    Get Content Of API Bank    ${response}
+    ${content_api_bank}    Send GET Request To Get Bank Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_bank}
     ${data}    Get Value From Json    ${json}    $.data
     ${count}    Get Length    ${data}[0]

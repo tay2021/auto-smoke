@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../page/page-profile-information.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-header.resource
 
 
@@ -14,8 +14,7 @@ Go to Profile Page
 
 Assert Profile Information Are Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Profile User    ${GL_BEARER_TOKEN}
-    ${content_api_profile}    Get Content Of Api Profile    ${response}
+    ${content_api_profile}    Send GET Request To Get Profile User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${dict}    Get Profile Information Detail    ${content_api_profile}
     ${expected_username}=    Get From Dictionary    ${dict}    username
     ${expected_fullname}=    Get From Dictionary    ${dict}    fullname

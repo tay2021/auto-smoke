@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 
 *** Variables ***
@@ -13,18 +13,18 @@ ${btn_save_new_pass}         //button[text()='Lưu mật khẩu']
 *** Keywords ***
 Set Current Password Textbox On Change Password Form
     [Arguments]    ${p_cur_pass}
-    Fill Text    ${input_cur_pass}    ${p_cur_pass}
+    Wait For Element State And Fill Text    ${input_cur_pass}    ${p_cur_pass}
     
 Set New Password Textbox On Change Password Form
     [Arguments]    ${p_new_pass}
-    Fill Text    ${input_new_pass}    ${p_new_pass}
+    Wait For Element State And Fill Text    ${input_new_pass}    ${p_new_pass}
 
 Set Confirm New Password Textbox On Change Password Form
     [Arguments]    ${p_confirm_new_pass}
-    Fill Text    ${input_confirm_new_pass}    ${p_confirm_new_pass}
+    Wait For Element State And Fill Text    ${input_confirm_new_pass}    ${p_confirm_new_pass}
 
 Click Button Luu Mat Khau On Change Password Form
-    Click    ${btn_save_new_pass}
+    Wait For Element State And Click On It    ${btn_save_new_pass}
     
     
 

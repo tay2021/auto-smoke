@@ -1,29 +1,20 @@
 *** Settings ***
 Resource    ../../import.resource
-
-
-*** Variables ***
-${txtbox_username}    //input[@name='username']
-${txtbox_password}    //input[@name='password']
-${btn_dangnhap}    //button[@type='submit']
-${lbel_LoginSuccessfully}    //p[text()='Đăng nhập thành công']
+Resource    ../../common/common-keywords.resource
 
 
 *** Keywords ***
 Input Username On Model Login
     [Arguments]    ${p_username}
-    Wait For Elements State    ${txtbox_username}    visible
-    Fill Text    ${txtbox_username}    ${p_username}
+    Wait For Element State And Fill Text    //input[@name='username']    ${p_username}
     
 Input Password On Model Login
     [Arguments]    ${p_password}
-    Wait For Elements State    ${txtbox_password}    visible
-    Fill Text    ${txtbox_password}    ${p_password}
+    Wait For Element State And Fill Text    //input[@name='password']    ${p_password}
     
 Click Button Dang Nhap On Model Login
-    Wait For Elements State    ${btn_dangnhap}    visible
-    Click    ${btn_dangnhap}
+    Wait For Element State And Click On It    //button[@type='submit']
 
 Get Label Info Login Successfully
-    ${locator}    Get Element    ${lbel_LoginSuccessfully}
+    ${locator}    Get Element    //p[text()='Đăng nhập thành công']
     RETURN    ${locator}

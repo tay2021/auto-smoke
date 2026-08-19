@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-detail-lsc.resource
 Resource    ../page/page-lsc.resource
 Resource    ../page/page-header.resource
@@ -19,8 +19,7 @@ Go to Lich Su Cuoc Page
     
 Assert Lich Su Cuoc Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get LSC Of User   ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
+    ${content_api_lsc}    Send GET Request To Get LSC Of User    ${GL_GEM88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_lsc}
     ${item}    Get Value From Json    ${json}    $.data.items
     ${count}    Get Length    ${item}[0]

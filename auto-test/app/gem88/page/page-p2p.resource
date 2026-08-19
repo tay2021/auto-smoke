@@ -3,10 +3,6 @@ Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 
 
-*** Variables ***
-
-
-
 *** Keywords ***
 Close Pop up Chao Mung Den Voi P2p
     ${locator}    Set Variable    //iframe[contains(@src,'buy')] >>> //*[text()='Chào mừng đến với P2P']
@@ -15,5 +11,4 @@ Close Pop up Chao Mung Den Voi P2p
     Click With Options    //iframe[contains(@src,'buy')] >>> div[role='dialog'] > div:nth-child(2)    force=True
     
 Get Element Balance Of User
-    ${locator}    Set Variable    //iframe[contains(@src,'buy')] >>> //div[contains(@class,'_balance-container_')]
-    RETURN    ${locator}
+    RETURN    //iframe[contains(@src,'buy')] >>> //div[contains(@class,'_balance-container_')]

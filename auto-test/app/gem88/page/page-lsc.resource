@@ -1,5 +1,4 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 
 *** Variables ***
@@ -13,7 +12,7 @@ Get Locator Lich Su Cuoc Trong On LSC Page
 
 Click On A Transaction On LSC Page
     [Arguments]    ${p_id_transaction}
-    Click    //*[@class='root-account-content-wrapper']//*[contains(@class,'flex flex-col px-3 py-4')]/*[contains(normalize-space(),'${p_id_transaction}')]
+    Wait For Element State And Click On It    //*[@class='root-account-content-wrapper']//*[contains(@class,'flex flex-col px-3 py-4')]/*[contains(normalize-space(),'${p_id_transaction}')]
     
 
 Click Button Cuoc Ngay On LSC Page

@@ -122,8 +122,3 @@ Assert Create Phieu Nap By Flash Pay Correct
     Click On Button Tao Ma QR On Flash Page
     ${src}    Get Locator Attribute Src Ma QR Flash Pay On Flash Page
     Should Start With    ${src}    data:image/png;base64
-
-
-
-
-

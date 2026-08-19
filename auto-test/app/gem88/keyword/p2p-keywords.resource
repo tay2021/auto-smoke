@@ -5,8 +5,6 @@ Resource    ../page/page-header.resource
 
 
 
-
-
 *** Keywords ***
 Go To Giao Dich P2p Page
     Click On The Avatar Image On Header Page
