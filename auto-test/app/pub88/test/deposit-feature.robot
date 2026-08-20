@@ -10,7 +10,7 @@ Test Teardown    Close Browser And Terminate Test Running
 
 *** Test Cases ***
 As a user I want to deposit by crypto correct
-    [Tags]    smoke    deposit-crypto    temp
+    [Tags]    smoke    deposit-crypto    
     Open Pub88 Site On Device    ${GL_PUB88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Pub88    ${VALID_USERNAME}    ${VALID_PASSWORD}
@@ -30,7 +30,7 @@ As a user I want to check available network crypto deposit correct
     Assert Available Crypto Networks are correct
 
 As a user I want to check address deposit network is correct
-    [Tags]    smoke    deposit-crypto-address    
+    [Tags]    smoke    deposit-crypto-address
     Open Pub88 Site On Device    ${GL_PUB88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Pub88    ${VALID_USERNAME}    ${VALID_PASSWORD}
@@ -60,7 +60,7 @@ As a user I want to deposit by the cao correct
     Assert Create Phieu Nap By The Cao Correct
 
 As a user I want to deposit by flash pay correct
-    [Tags]    smoke    flash    temp1
+    [Tags]    smoke    flash
     Open Pub88 Site On Device    ${GL_PUB88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Pub88    ${VALID_USERNAME}    ${VALID_PASSWORD}

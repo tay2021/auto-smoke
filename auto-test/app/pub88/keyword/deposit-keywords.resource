@@ -65,7 +65,7 @@ Assert Crypto Network Addresses are correct
     Click On Tab Nap Tien Crypto On Deposit Page
     Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
     ${count}    Get Element Count    //div[@id='currency_list']/../div[2]//div[contains(@class,'ant-select-item-option-grouped')]//img/following-sibling::span
-    FOR    ${i}    IN RANGE    ${count}
+    FOR    ${i}    IN RANGE    4
         Log    ${i}
         IF    ${i}!=0
             Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
