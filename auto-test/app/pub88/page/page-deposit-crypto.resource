@@ -1,12 +1,10 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 
 
 *** Keywords ***
 Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
     Wait For Element State And Click On It    //div[@class='ant-select-selector']
-    
 
 Select Currency And NetWork On Deposit Crypto Page
     [Arguments]    ${p_currency}    ${p_network}

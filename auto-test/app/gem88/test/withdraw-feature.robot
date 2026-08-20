@@ -52,4 +52,4 @@ As a user I can withdraw by crypto successfully
     Close Lucky Wheel Notification If Shown
     Go To Withdraw Page
     Withdraw By Crypto    TEmkQ6ViSU5Mg64Euw2duH2XP9gdfwBY5k    200    11111
-    Assert Withdraw By Mobi Card Successfully
+    Assert Withdraw By Crypto Successfully

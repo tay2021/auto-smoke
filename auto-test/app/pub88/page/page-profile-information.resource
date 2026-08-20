@@ -1,30 +1,24 @@
 *** Settings ***
-Resource    ../../import.resource
-
-
-*** Variables ***
-${img_avatar_profile_info}               //img[@alt='Thông tin tài khoản']
-${txt_username_profile}                  //input[@id='username']
-${txt_fullname_profile}                 //input[@placeholder='Nhập tên hiển thị']
-${txt_phone_profile}                    //input[@placeholder='Số diện thoại']
-${txt_email_profile}                    //input[@placeholder='Địa chỉ email']
+Resource    ../../common/common-keywords.resource
 
 
 
 *** Keywords ***
+Click On The Button Thay Doi Mat Khau On The Profile Page
+    Wait For Element State And Click On It    //span[text()='Thay đổi']
+
 Get User Name Value On Profile Page
-    ${value}    Get Attribute    ${txt_username_profile}    value
+    ${value}    Wait For Element State And Get Attribute    //input[@id='username']    value
     RETURN    ${value}
 
 Get Full Name Value On Profile Page
-    ${value}    Get Text    ${txt_fullname_profile}
+    ${value}    Wait For Element State And Get Text    //input[@placeholder='Nhập tên hiển thị']
     RETURN    ${value}
 
 Get Phone Value On Profile Page
-    ${value}    Get Text    ${txt_phone_profile}
+    ${value}    Wait For Element State And Get Text        //input[@placeholder='Số diện thoại']
     RETURN    ${value}
 
-
 Get Email Value On Profile Page
-    ${value}    Get Text    ${txt_email_profile}
+    ${value}    Wait For Element State And Get Text    //input[@placeholder='Địa chỉ email']
     RETURN    ${value}

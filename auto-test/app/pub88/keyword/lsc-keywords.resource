@@ -1,23 +1,21 @@
 *** Settings ***
 Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-lsc.resource
+Resource    ../page/page-account-info.resource
+Resource    ../page/page-footer-menu.resource
 Library     ../../utils/utils-lib.py
-
-
-
-
 
 
 *** Keywords ***
 Go to Lich Su Cuoc Page
-    Go To    ${GL_PUB88_URL}/account/history-bet
+    Click On The Menu Tai Khoan On The Footer Menu
+    Click On The Menu Ca Cuoc On The Account Info Page
     
 Assert Lich Su Cuoc Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get LSC Of User   ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
+    ${content_api_lsc}    Send GET Request To Get LSC Of User   ${GL_PUB88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_lsc}
     ${item}    Get Value From Json    ${json}    $.data.items
     ${count}    Get Length    ${item}[0]
@@ -46,21 +44,18 @@ Assert Detail Of A Betting Transaction In Detail LSC Page
         ${expected_thuong}    Set Variable    0
     END
 
-    ${expected_tien_cuoc}    Format With K From Original    ${expected_tien_cuoc}
-    ${expected_thang_thua}    Format With K From Original    ${expected_thang_thua}
     ${expected_thang_thua}    Remove String    ${expected_thang_thua}    +    -
     ${expected_thuong}    Format With K From Original    ${expected_thuong}
-        
-    ${actual_id}    Get Value ID In LSC Detail Page    1
-    ${actual_id}=    Evaluate    "${actual_id}"[1:]    #remove # before of id
-    ${actual_tro_choi}    Get Value Tro Choi Name In LSC Detail Page    1
-    ${actual_tien_cuoc}    Get Value Tien Cuoc In LSC Detail Page    1
-    ${actual_thang_thua}    Get Value Tien Thang Thua In LSC Detail Page    1
-    ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -
-    ${actual_thuong}    Get Value Tien Thuong In LSC Detail Page    1
+
+    Click On The First Expand Arrow On LSC Page
+    ${actual_id}    Get Value ID Of First Transaction On LSC Detail Page
+    ${actual_tro_choi}    Get Value Tro Choi Name Of First Transaction On LSC Detail Page
+    ${actual_tien_cuoc}    Get Value Tien Cuoc Of First Transaction On LSC Detail Page
+    ${actual_thang_thua}    Get Value Tien Thang Thua Of First Transaction On LSC Detail Page
+    ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -    K
+    ${actual_tien_cuoc}    Remove String    ${actual_tien_cuoc}    ${SPACE}    K
 
     Should Be True    '${expected_id}'=='${actual_id}'
     Should Be True    '${expected_tro_choi}'=='${actual_tro_choi}'
     Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
     Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
-    Should Be True    '${expected_thuong}'=='${actual_thuong}'

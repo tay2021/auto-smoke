@@ -10,7 +10,7 @@ Test Teardown    Close Browser And Terminate Test Running
 
 *** Test Cases ***
 As a user I want to deposit by crypto correct
-    [Tags]    smoke    deposit-crypto    
+    [Tags]    smoke    deposit-crypto    temp
     Open Pub88 Site On Device    ${GL_PUB88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Pub88    ${VALID_USERNAME}    ${VALID_PASSWORD}

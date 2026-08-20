@@ -1,14 +1,17 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../page/page-gift-code.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-footer-menu.resource
+Resource    ../page/page-account-info.resource
 
 
 
 
 *** Keywords ***
 Go To Gift Code Page
-    Go To    ${GL_PUB88_URL}account/gift-code
+    Click On The Menu Tai Khoan On The Footer Menu
+    Click On The Menu Gift Code On The Account Info Page
+
 
 Assert Claim Gift Code Correct
     ${locator}    Get Locator Label Tille Gift Code On Gift Code Page

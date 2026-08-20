@@ -2,20 +2,23 @@
 Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-lsgd.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../page/page-footer-menu.resource
+Resource    ../page/page-account-info.resource
+Resource    ../../common/user-api-request.resource
 Library     ../../utils/utils-lib.py
+
 
 
 
 
 *** Keywords ***
 Go to Lich Su Giao Gich Page
-    Go To    ${GL_PUB88_URL}account/history-payment
+    Click On The Menu Tai Khoan On The Footer Menu
+    Click On The Menu Giao Dich On The Account Info Page
     
 Assert LSGD Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get LSGD Of User   ${bearer_token}
-    ${content_api_lsgd}    Get Content Of API LSGD    ${response}
+    ${content_api_lsgd}    Send GET Request To Get LSGD Of User    ${GL_PUB88_GATEWAY_URL}   ${bearer_token}
     ${json}    Convert String To Json    ${content_api_lsgd}
     ${item}    Get Value From Json    ${json}    $.data.items
     ${count}    Get Length    ${item}[0]
@@ -37,6 +40,7 @@ Assert LSGD Page Show Correct
     
 Assert Detail Of A Transaction In Detail LSGD Page
     [Arguments]    ${p_list_lsgd}
+    ${i}    Set Variable    1
     FOR    ${item}    IN    @{p_list_lsgd}
         ${expected_id}    Get From Dictionary    ${item}    id
         ${expected_amount}    Get From Dictionary    ${item}    amount
@@ -54,13 +58,17 @@ Assert Detail Of A Transaction In Detail LSGD Page
         ELSE IF    '${expected_action}'=='WITHDRAW'
             ${expected_action}    Set Variable    Rút tiền
         END
-
-        ${actual_amount}    Get Value Amount In LSDG Detail Page    ${expected_id}
+        
+        Click To View Detail Of Transaction On LSDG Detail Page    ${i}
+        ${actual_amount}    Get Value Amount On LSDG Detail Page    ${i}
         ${actual_amount}=    Evaluate    re.sub(r'^[+-]', '', """${actual_amount}""") if re.match(r'^[+-]', """${actual_amount}""") else """${actual_amount}"""
-        ${actual_action}    Get Value Loai Giao Dich In LSDG Detail Page    ${expected_id}
-        ${actual_status}    Get Value Trang Thai In LSDG Detail Page    ${expected_id}
+        ${actual_amount}=    Evaluate    "${actual_amount}"[:-1] + " K"
+        ${actual_action}    Get Value Loai Giao Dich On LSDG Detail Page    ${i}
+        ${actual_status}    Get Value Trang Thai On LSDG Detail Page    ${i}
+
         Should Be True    '${expected_amount}'=='${actual_amount}'
         Should Be True    '${expected_action}'=='${actual_action}'
-
+        Click To View Detail Of Transaction On LSDG Detail Page    ${i}
+        ${i}    Evaluate    ${i} + 1
     END
 

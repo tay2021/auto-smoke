@@ -10,7 +10,7 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check Login to site Pub88 Dai ly successfully
     [Tags]    smoke    register
-    Open Pub88 Site And Maximize Window    ${GL_PUB88_URL}
+    Open Pub88 Site On Device    ${GL_PUB88_URL}
     Close Welcome Pop Up If Shown
     Open Register Form    ${GL_PUB88_URL}/?i=tester&popup=register
     ${username}    Generate Random Username    tayp

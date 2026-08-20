@@ -1,21 +1,22 @@
 *** Settings ***
 Resource    ../../import.resource
-Resource    ../api-keywords/user-api-request.resource   
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-account-promotion.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-footer-menu.resource
+Resource    ../page/page-account-info.resource
 Library     ../../utils/utils-lib.py
-
-
 
 
 *** Keywords ***
 Go To User Promotion Page
-    Go To    ${GL_PUB88_URL}/account/promotion
+    Click On The Menu Tai Khoan On The Footer Menu
+    Click On The Menu Khuyen Mai On The Account Info Page
+
     
 Assert User Promotion Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
+    ${content_api_lsc}    Send GET Request To Get Promotion Of User    ${GL_PUB88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_lsc}
     ${code}    Get Value From Json    ${json}    $.code
     ${code}    Set Variable    ${code}[0]
@@ -29,15 +30,10 @@ Assert User Promotion Page Show Correct
     ELSE IF    ${code}==400
         Assert User Without Promotion
     END
-        
-       
-    
-    
 
 Assert Promotion Commission Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Commission Detail Of User    ${bearer_token}
-    ${content_api_promotion_detail}    Get Content Of API User Promotion Commission Detail    ${response}
+    ${content_api_promotion_detail}    Send GET Request To Get Promotion Commission Detail Of User    ${GL_PUB88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_promotion_detail}
     ${expected_total_stake}    Get Value From Json    ${json}    $.data.stake
     ${expected_total_stake}=    Evaluate    "{:,}".format($expected_total_stake[0])
@@ -56,8 +52,7 @@ Assert Promotion Commission Of User
 
 Assert Promotion Welcome Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_promotion}    Get Content Of API User Promotion    ${response}
+    ${content_api_promotion}    Send GET Request To Get Promotion Of User    ${GL_PUB88_GATEWAY_URL}    ${bearer_token}
     ${json}    Convert String To Json    ${content_api_promotion}
     ${deposit_amount}    Get Value From Json    ${json}    $.data.deposit_amount
     ${rolling}    Get Value From Json    ${json}    $.data.rolling
@@ -66,7 +61,9 @@ Assert Promotion Welcome Of User
     ${expected_promotion_amount}    Format With K    ${promotion_amount}[0]
     ${expected_rolling}    Format With K    ${rolling}[0]
     ${actual_so_tien_nap}    Get Value Of So Tien Da Nap Promtion 100% On Promotion Page
+    ${actual_so_tien_nap}    Evaluate    "${actual_so_tien_nap}"[:-1]+" K"
     ${actual_so_tien_thuong}    Get Value Of So Tien Thuong Promtion 100% On Promotion Page
+    ${actual_so_tien_thuong}    Evaluate    "${actual_so_tien_thuong}"[:-1]+" K"
     ${actual_so_tien_rolling}    Get Value Of So Tien Rolling Promtion 100% On Promotion Page
     ${actual_so_tien_rolling}    Remove String    ${actual_so_tien_rolling}    /
     ${actual_so_tien_rolling}    Strip String    ${actual_so_tien_rolling}    mode=left

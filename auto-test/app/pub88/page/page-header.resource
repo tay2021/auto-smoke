@@ -1,18 +1,7 @@
 *** Settings ***
-Resource    ../../import.resource
-
-
-*** Variables ***
-${btn_dang_nhap_header}                  //header//div[@class='flex items-center']//span[text()='Đăng nhập']
+Resource    ../../common/common-keywords.resource
 
 
 *** Keywords ***
 Click Button Dang Nhap On Header Page
-    Wait For Elements State    ${btn_dang_nhap_header}    attached
-    Click    ${btn_dang_nhap_header}
-
-
-
-
-
-
+    Wait For Element State And Click On It    //header//div[@class='flex items-center']//span[text()='Đăng nhập']

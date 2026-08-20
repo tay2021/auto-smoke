@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 
 
 
@@ -11,8 +11,7 @@ Go To VIP User Page
 
 Assert VIP User Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get VIP Detail Of User   ${bearer_token}
-    ${content_api_vip}    Get Content Of API User VIP Detail    ${response}
+    ${content_api_vip}    Send GET Request To Get VIP Detail Of User    ${GL_PUB88_GATEWAY_URL}   ${bearer_token}
     ${json}    Convert String To Json    ${content_api_vip}
     ${level}    Get Value From Json    ${json}    $.data[0].level
     #${actual_vip_level}    Get Value Of Vip Level On VIP Program Page

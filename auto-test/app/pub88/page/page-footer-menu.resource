@@ -1,5 +1,4 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 
 
@@ -10,3 +9,4 @@ Click On The Menu Tai Khoan On The Footer Menu
 
 Click On The Menu Nap Tien On The Footer Menu
     Wait For Element State And Click On It    //div[@id='footer-mb']/div/div[1]
+

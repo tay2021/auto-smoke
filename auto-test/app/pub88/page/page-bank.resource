@@ -1,13 +1,10 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
-
 
 
 *** Keywords ***
 Get Div Chua Co Tai Khoan Lien Ket On Quan Ly Bank Page
-    ${locator}    Set Variable    //span[text()='Quý khách vui lòng thêm tài khoản ngân hàng chính chủ để có thể thực hiện Nạp/Rút tiền.']
-    RETURN    ${locator}
+    RETURN    //span[text()='Quý khách vui lòng thêm tài khoản ngân hàng chính chủ để có thể thực hiện Nạp/Rút tiền.']
 
 Get Value Of Ten Tai Khoan On Quan Ly Bank Page
     [Arguments]    ${p_index}

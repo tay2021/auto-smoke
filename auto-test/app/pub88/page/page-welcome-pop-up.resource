@@ -1,16 +1,9 @@
 *** Settings ***
-Resource    ../../import.resource
-
-
-*** Variables ***
-${btn_close_welcome_pop_up}    //div[contains(@class,'swiper-pagination')]/../preceding-sibling::img
-
+Resource    ../../common/common-keywords.resource
 
 *** Keywords ***
 Click Button Close Welcome Pop Up
-    Wait For Elements State    ${btn_close_welcome_pop_up}    visible
-    Click    ${btn_close_welcome_pop_up}
+    Wait For Element State And Click On It    //div[contains(@class,'swiper-pagination')]/../preceding-sibling::img
 
 Get Button Close Welcome Pop Up Element
-    ${element}    Set Variable    ${btn_close_welcome_pop_up}
-    RETURN    ${element}
+    RETURN    //div[contains(@class,'swiper-pagination')]/../preceding-sibling::img

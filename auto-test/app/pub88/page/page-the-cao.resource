@@ -1,9 +1,5 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
-
-
-*** Variables ***
 
 
 *** Keywords ***

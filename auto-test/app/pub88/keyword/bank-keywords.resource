@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
 Resource    ../page/page-bank.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-account-info.resource
@@ -15,8 +15,7 @@ Go To Quan Ly Bank Page
 
 Assert Quan Ly Bank Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Bank Of User    ${bearer_token}
-    ${content_api_bank}    Get Content Of API Bank    ${response}
+    ${content_api_bank}    Send GET Request To Get Bank Of User    ${GL_PUB88_GATEWAY_URL}    ${bearer_token}
     ${dict}    Evaluate    json.loads('''${content_api_bank}''')    modules=json
     ${data}    Get From Dictionary    ${dict}    data
     ${count}    Get Length    ${data}
@@ -49,5 +48,4 @@ Assert Bank Of User Is Correct
         ${locator}    Set Variable    //section//div[text()='${expected_bank_account_no}']/following-sibling::div[text()='${expected_bank_account_name}']
         ${exist}    Check Element Exists On Page    ${locator}
         Should Be True    ${exist}
-
     END

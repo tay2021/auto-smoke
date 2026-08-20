@@ -7,11 +7,21 @@ Resource    ../keyword/promotion-keywords.resource
 Test Teardown    Close Browser And Terminate Test Running
 
 *** Test Cases ***
-As a user I want to check user promotion correct
-    [Tags]    smoke    promotion
-    Open Pub88 Site And Maximize Window    ${GL_PUB88_URL}
+As a user I want to check user promotion with hoan tra correct
+    [Tags]    smoke    promotion    commission
+    Open Pub88 Site On Device    ${GL_PUB88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Pub88    ${VALID_USERNAME}    ${VALID_PASSWORD}
+    Assert Login To Site Successfully
+    Get And Set Bearer Token From Cookie After Login Successfully
+    Go To User Promotion Page
+    Assert User Promotion Page Show Correct
+    
+As a user I want to check user promotion with 100% correct
+    [Tags]    smoke    promotion    100%
+    Open Pub88 Site On Device    ${GL_PUB88_URL}
+    Close Welcome Pop Up If Shown
+    Login To Site Pub88    ${USER_KM_100%}    ${VALID_PASSWORD}
     Assert Login To Site Successfully
     Get And Set Bearer Token From Cookie After Login Successfully
     Go To User Promotion Page
