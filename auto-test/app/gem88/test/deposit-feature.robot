@@ -53,7 +53,7 @@ As a user I want to check link huong dan deposit withdraw by crypto
     Assert Link Huong Dan Nap Rut Crypto Correct
 
 As a user I want to deposit by the cao correct
-    [Tags]    smoke    deposit-card    
+    [Tags]    smoke    deposit-card
     Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USERNAME}    ${VALID_PASSWORD}

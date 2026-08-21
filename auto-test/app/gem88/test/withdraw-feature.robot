@@ -43,7 +43,7 @@ As a user I can withdraw by mobi card successfully
     Assert Withdraw By Mobi Card Successfully
 
 As a user I can withdraw by crypto successfully
-    [Tags]    smoke    withdraw-crypto
+    [Tags]    smoke    withdraw-crypto    temp1
     Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USER_CRYPTO}    ${VALID_PASSWORD}
