@@ -85,26 +85,11 @@ Assert Available Crypto Currency Show Correct
 
 Assert Link Huong Dan Nap Rut Crypto Correct
     Click On Tab Nap Tien Crypto On Deposit Page
-    ${actual_link_dang_ky}    Get Hyperlink Value Of Link Huong Dan Dang Ky Binance On Deposit Crypto Page
-    ${actual_link_dang_ky}    Evaluate    '${actual_link_dang_ky}'[1:]
-    Click On Link Huong Dan Dang Ky Binance On Deposit Crypto Page
-    Sleep    0.5s
-    ${current_url}    Get Url    
-    Should Be True    "${current_url}"=="${GL_GEM88_URL}${actual_link_dang_ky}"
-    Go Back
-    ${actual_link_nap_tien}    Get Hyperlink Value Of Link Huong Dan Nap Tien On Deposit Crypto Page
-    ${actual_link_nap_tien}    Evaluate    '${actual_link_nap_tien}'[1:]
-    Click On Link Huong Dan Nap Tien On Deposit Crypto Page
+    Click On The Link Huong Dan Mua Crypto On Deposit Crypto Page
     Sleep    0.5s
     ${current_url}    Get Url
-    Should Be True    "${current_url}"=="${GL_GEM88_URL}${actual_link_nap_tien}"
-    Go Back
-    ${actual_link_rut_tien}    Get Hyperlink Value Of Link Huong Dan Rut Tien On Deposit Crypto Page
-    ${actual_link_rut_tien}    Evaluate    '${actual_link_rut_tien}'[1:]
-    Click On Link Huong Dan Rut Tien On Deposit Crypto Page
-    Sleep    0.5s
-    ${current_url}    Get Url
-    Should Be True    "${current_url}"=="${GL_GEM88_URL}${actual_link_rut_tien}"
+    Should Be True    "${current_url}"=="${GL_GEM88_URL}huong-dan-nap-rut-binance"
+
 
 Assert Create Phieu Nap By The Cao Correct
     Click On Tab Nap Tien The Cao On Deposit Page

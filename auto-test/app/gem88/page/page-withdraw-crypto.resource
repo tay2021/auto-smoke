@@ -7,6 +7,20 @@ Resource    ../../common/common-keywords.resource
 Click On The Tab Crypto On The Withdraw Crypto Page
     Wait For Element State And Click On It    //img[@alt='Crypto']
 
+
+Click On The Dropdownlist Withdraw Network On The Withdraw Crypto Page
+    Wait For Element State And Click On It    //div[@class='withdraw-wrapper']//button[@role='combobox']
+    
+Select Withdraw Network On The Withdraw Crypto Page
+    [Arguments]    ${p_network_withdraw}
+    ${count}=    Get Element Count    //span[normalize-space()='${p_network_withdraw}']
+    IF    ${count}==1
+        Wait For Element State And Click On It    //span[normalize-space()='${p_network_withdraw}']
+    ELSE
+        Wait For Element State And Click On It    (//span[normalize-space()='${p_network_withdraw}'])[2]
+    END
+
+
 Set Value On TextBox Address On The Withdraw Crypto Page
     [Arguments]    ${p_address}
     Wait For Element State And Fill Text    //input[@id='wallet_address']    ${p_address}

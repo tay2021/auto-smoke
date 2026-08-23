@@ -4,6 +4,7 @@ Resource    ../page/page-header.resource
 Resource    ../page/page-withdraw-bank.resource
 Resource    ../page/page-withdraw-mobi.resource
 Resource    ../page/page-withdraw-crypto.resource
+Resource    ../page/page-withdraw-crypto-confirm-model.resource
 
 
 
@@ -97,12 +98,28 @@ Assert Withdraw By Mobi Card Successfully
     Should Be True    ${exits}
 
 Withdraw By Crypto
-    [Arguments]    ${p_address}    ${p_amount}    ${p_phone_number}
+    [Arguments]    ${p_network}    ${p_address}    ${p_amount}    ${p_phone_number}
     Click On The Tab Crypto On The Withdraw Crypto Page
+    Click On The Dropdownlist Withdraw Network On The Withdraw Crypto Page
+    Select Withdraw Network On The Withdraw Crypto Page    ${p_network}
     Set Value On TextBox Address On The Withdraw Crypto Page    ${p_address}
     Set Value On TextBox Amount Withdraw On The Withdraw Crypto Page    ${p_amount}
     Set Value On TextBox Confirm Phone Number On The Withdraw Crypto Page    ${p_phone_number}
     Click On The Button Rut Tien On The Withdraw Crypto Page
+
+Confirm Withdraw By Crypto Correct
+    [Arguments]    ${p_network}    ${p_address}    ${p_amount}
+    ${confirm_network}    Get Text Of Span Loai Tien Ao On Model Withdraw Crypto Confirm Page
+    ${confirm_4last_digit_address}    Get Text Of Span Dia Chi Vi Tien Ao On Model Withdraw Crypto Confirm Page
+    ${confirm_amount}    Get Text Of Span So Tien Rut On Model Withdraw Crypto Confirm Page
+    Should Be True    '${p_network}'=='${confirm_network}'
+    ${last_4digit_address}=    Evaluate    "${p_address}"[-4:]
+    Should Be True    '${last_4digit_address}'=='${confirm_4last_digit_address}'
+    ${confirm_amount}=    Evaluate    "${confirm_amount}"[:-8]
+    Should Be True    '${p_amount}'=='${confirm_amount}'
+    Click On The Checkbox Confirm On Model Withdraw Crypto Confirm Page
+    Click On The Button Xac Nhan ON Modle Withdraw Crypto Confirm Page
+
 
 Assert Withdraw By Crypto Successfully
     ${element}=    Get Element Rut Tien Thanh Cong Qua The Cao On The Withdraw Crypto Page

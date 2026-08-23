@@ -43,7 +43,7 @@ As a user I can withdraw by mobi card successfully
     Assert Withdraw By Mobi Card Successfully
 
 As a user I can withdraw by crypto successfully
-    [Tags]    smoke    withdraw-crypto    temp1
+    [Tags]    smoke    withdraw-crypto
     Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Gem88    ${VALID_USER_CRYPTO}    ${VALID_PASSWORD}
@@ -51,5 +51,10 @@ As a user I can withdraw by crypto successfully
     Get And Set Bearer Token From Cookie After Login Successfully
     Close Lucky Wheel Notification If Shown
     Go To Withdraw Page
-    Withdraw By Crypto    TEmkQ6ViSU5Mg64Euw2duH2XP9gdfwBY5k    200    11111
+    ${network-withdraw}=    Set Variable    USDT - TRC20
+    ${address-withdraw}=    Set Variable    TEmkQ6ViSU5Mg64Euw2duH2XP9gdfwBY5k
+    ${amount}=    Set Variable    200
+    ${confirm-phone}=    Set Variable    11111
+    Withdraw By Crypto    ${network-withdraw}    ${address-withdraw}    ${amount}    ${confirm-phone}
+    Confirm Withdraw By Crypto Correct    ${network-withdraw}    ${address-withdraw}    ${amount}
     Assert Withdraw By Crypto Successfully

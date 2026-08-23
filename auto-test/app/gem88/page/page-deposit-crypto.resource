@@ -19,23 +19,5 @@ Get Text Of Span Address On Deposit Crypto Page
     ${text}    Wait For Element State And Get Text    //span[text()='Địa chỉ Ví']/following-sibling::div/span
     RETURN    ${text}
 
-Click On Link Huong Dan Dang Ky Binance On Deposit Crypto Page
-    Wait For Element State And Click On It    //span[text()='Đăng ký Binance']/..
-    
-Click On Link Huong Dan Nap Tien On Deposit Crypto Page
-    Wait For Element State And Click On It    //span[text()='Nạp tiền']/..
-
-Click On Link Huong Dan Rut Tien On Deposit Crypto Page
-    Wait For Element State And Click On It    //span[text()='Rút tiền']/..
-
-Get Hyperlink Value Of Link Huong Dan Dang Ky Binance On Deposit Crypto Page
-    ${value}    Wait For Element State And Get Attribute    //span[text()='Đăng ký Binance']/..    href
-    RETURN    ${value}
-
-Get Hyperlink Value Of Link Huong Dan Nap Tien On Deposit Crypto Page
-    ${value}    Wait For Element State And Get Attribute    //span[text()='Nạp tiền']/..    href
-    RETURN    ${value}
-
-Get Hyperlink Value Of Link Huong Dan Rut Tien On Deposit Crypto Page
-    ${value}    Wait For Element State And Get Attribute    //span[text()='Rút tiền']/..    href
-    RETURN    ${value}
+Click On The Link Huong Dan Mua Crypto On Deposit Crypto Page
+    Wait For Element State And Click On It    //button[text()='Xem hướng dẫn mua Crypto']
