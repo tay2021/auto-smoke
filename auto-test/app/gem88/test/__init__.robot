@@ -4,6 +4,8 @@ Resource    ../gem88-variable.resource
 Resource    ../../common/authen-api-request.resource
 Resource    ../../common/promotion-api-request.resource
 Library     OperatingSystem
+Library     String
+Library    BuiltIn
 Suite Setup    Clear All Free Spin Of User
 
 
