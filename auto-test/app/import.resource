@@ -4,3 +4,4 @@ Library    String
 Library    OperatingSystem
 Library    JSONLibrary
 Library    DateTime
+Library    Collections

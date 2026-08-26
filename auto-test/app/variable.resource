@@ -22,6 +22,7 @@ ${URI_VIP_PROGRAM}           user/vip-program/user
 
 # api promotion
 ${URI_LUCKY_WHEEL_V2}        lucky-wheel-v2/user-data
+${URI_LUCKY_WHEEL_SPIN}      lucky-wheel-v2/spin
 
 
 # api payment
@@ -38,5 +39,9 @@ ${URI_DAILY_THONGKE_TOTAL_AGENT}                        agent/statistic/total-of
 ${URI_DAILY_DIRECT_AGENT}                               agent/statistic/direct-agent-users
 ${URI_DAILY_SUB_AGENT}                                  agent/statistic/sub-agents
 ${URI_DAILY_BET-BY-CATEGORY}                            agent/statistic/bet-by-category
+
+
+# api authen
+${URI_LOGIN}    auth/login
 
 

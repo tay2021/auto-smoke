@@ -12,10 +12,10 @@ As a user I want to check Login to site Lu88 Dai ly successfully
     Open Gem88 Site On Device    ${GL_GEM88_URL}
     Close Welcome Pop Up If Shown
     Open Register Form    ${GL_GEM88_URL}/?i=tester&popup=register
-    ${username}    Generate Random Username    tayg
+    ${user}    Generate Random Username    tayg
     ${password}    Set Variable    123456
     ${phone_number}    Set Variable    09111111111
-    Register An Gem88 Account    ${username}    ${password}    ${phone_number}
-    Assert Register An Account Successfully    ${username}
+    Register An Gem88 Account    ${user}    ${password}    ${phone_number}
+    Assert Register An Account Successfully    ${user}
 
 

@@ -3,7 +3,7 @@ Documentation     Variables for Zo88 tests
 
 *** Variables ***
 # Application URLs
-${GL_ZO88_DOMAIN}                zo88.tw
+${GL_ZO88_DOMAIN}                zo88.ooo
 ${GL_ZO88_URL}                   https://${GL_ZO88_DOMAIN}/
 ${GL_ZO88_GATEWAY_URL}           https://${GL_ZO88_DOMAIN}/gw/api/v2/
 
