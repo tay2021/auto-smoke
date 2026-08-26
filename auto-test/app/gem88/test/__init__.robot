@@ -6,6 +6,7 @@ Resource    ../../common/promotion-api-request.resource
 Library     OperatingSystem
 Library     String
 Library    BuiltIn
+Library    Collections
 Suite Setup    Clear All Free Spin Of User
 
 
