@@ -12,6 +12,7 @@ Get Label Locator Tham Gia Khuyen Mai Hoan Tra On Promotion Page
     RETURN    ${locator}
     
 Get Value Of Total Stake On Promotion Page
+    Sleep    2s
     ${text}    Wait For Element State And Get Text    (//*[contains(@class,'bg-promotion-detail')])[2]//*[text()='Số tiền cược:']/following::span[1]
     RETURN    ${text}
 
