@@ -8,7 +8,6 @@ Suite Setup    Clear All Free Spin Of User
 
 *** Keywords ***
 Clear All Free Spin Of User
-    Log    ${CURDIR}
     ${list}    Get All Username Variable From Resource File
     Log    ${list}
     FOR    ${user}    IN    @{list}
@@ -23,27 +22,15 @@ Clear All Free Spin Of User
         END
     END
 
-Get Project Root Path
-    ${init_dir}    Set Variable    ${CURDIR}
-    ${project_root}    Catenate    SEPARATOR=/    ${init_dir}    ..
-    ${project_root_path}    Normalize Path    ${project_root}
-    RETURN    ${project_root_path}
-    
 Check Start With Username
     [Arguments]    ${p_string}
     ${status}    Run Keyword And Return Status    Should Match Regexp    ${p_string}    ^\\$\\{USERNAME.*
     RETURN    ${status}
-    
-    
+
 Get All Username Variable From Resource File
-    ${project_root_path}=    Get Project Root Path
-    ${resource_path}=    Catenate    SEPARATOR=/    ${project_root_path}    gem88-variable.resource
-    ${resource_path}=    Normalize Path    ${resource_path}
-    #Log    Reading resource from: ${resource_path}
-    ${content}=    Get File    ${resource_path}
+    ${content}=    Get File    ${CURDIR}/../gem88-variable.resource
     @{lines}=    Split To Lines    ${content}
-    @{username_vars}=    Create List    
-    
+    @{username_vars}=    Create List
     FOR    ${line}    IN    @{lines}
         ${line}=    Strip String    ${line}
         ${bool}=    Check Start With Username    ${line}
