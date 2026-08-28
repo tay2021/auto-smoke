@@ -1,5 +1,4 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../gem88-variable.resource
 Resource    ../../common/authen-api-request.resource
 Resource    ../../common/promotion-api-request.resource
