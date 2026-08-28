@@ -1,9 +1,6 @@
 *** Settings ***
 Resource    ../keyword/freespin-keywords.resource
 
+Suite Setup    Clear All Free Spin Of User
 
 *** Test Cases ***
-Check Temp TC
-    [Tags]    login
-    Clear All Free Spin Of User
-    Log    Done
