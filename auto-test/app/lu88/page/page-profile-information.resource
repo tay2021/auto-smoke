@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 
 *** Variables ***
@@ -33,3 +34,6 @@ Get Email Value On Profile Page
 Get Telegram Value On Profile Page
     ${value}    Get Text    ${txt_telegram_profile}
     RETURN    ${value}
+
+Click On The Button Thay Doi Mat Khau At Profile Page
+    Wait For Element State And Click On It    //span[text()='Thay đổi']/..

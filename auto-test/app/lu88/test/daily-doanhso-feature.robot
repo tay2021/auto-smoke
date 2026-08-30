@@ -11,10 +11,9 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check tong quan dai ly hom nay
     [Tags]    smoke    doanh-so    daily
-    Open Lu88 Site And Maximize Window    ${GL_LU88_DAILY_URL}
+    Open Lu88 Site On Device    ${GL_LU88_DAILY_URL}
     Go To Site Lu88 Dai Ly    ${GL_LU88_DAILY_URL}
-    Login To Site Lu88 Dai Ly    ${VALID_USERNAME}    ${VALID_PASSWORD}
-    Sleep    1s
+    Login To Site Lu88 Dai Ly    ${USERNAME_DAILY}    ${VALID_PASSWORD}
     Get And Set Bearer Token From Cookie After Login Successfully
     Assert Login To Site Lu88 Dai Ly Successfully
     Go To Page Doanh So Dai Ly

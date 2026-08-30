@@ -3,19 +3,19 @@ Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
-Resource    ../page/page-header.resource
 Resource    ../page/page-daily-header.resource
 Resource    ../page/page-daily-login.resource
-Resource    ../api-keywords/user-api-request.resource
 Resource    ../page/page-model-register.resource
+Resource    ../../common/user-api-request.resource
+Resource    ../lu88-variable.resource
 
 
 
 
 *** Keywords ***
-Open Lu88 site and maximize window
-    [Arguments]    ${p_url}
-    Open Site and maximize window    ${p_url}
+Open Lu88 site on device
+    [Arguments]    ${p_url}    ${p_device_type}=iPhone 17 Pro Max
+    Open Site On Device    ${p_url}    ${p_device_type}
 
 Close Welcome Pop Up If Shown
     ${btn_close_welcome_pop_up}    Get Button Close Welcome Pop Up Element
@@ -24,9 +24,12 @@ Close Welcome Pop Up If Shown
         Click    ${btn_close_welcome_pop_up}
     END
 
+Go To Login Page
+    Go To    ${GL_LU88_URL}?popup=login
+
 Login To Site Lu88
     [Arguments]    ${p_username}    ${p_password}
-    Click Button Dang Nhap On Header Page
+    Go To Login Page
     Input Username On Model Login    ${p_username}
     Input Password On Model Login    ${p_password}
     Keyboard Key    press    Enter
@@ -50,13 +53,10 @@ Login To Site Lu88 Dai Ly
 
 Assert Login To Site Lu88 Dai Ly Successfully
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Profile User    ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
-    ${json}    Convert String To Json    ${content_api_lsc}
-    ${username}    Get Value From Json    ${json}    $.data.username
-    ${balance}    Get Value From Json    ${json}    $.data.balance
-    ${expected_username}    Set Variable    ${username}[0]
-    ${expected_balance}    Set Variable    ${balance}[0]
+    ${response}    Send GET Request To Get Profile User    ${GL_LU88_GATEWAY_URL}    ${bearer_token}
+    ${dict}    Evaluate    json.loads('''${response}''')    modules=json
+    ${expected_username}    Get From Dictionary    ${dict['data']}    username
+    ${expected_balance}    Get From Dictionary    ${dict['data']}    balance
     ${actual_username}    Get UserName At Header Name On Page Daily
     ${actual_balance}    Get Balance User At Header Name On Page Daily
     ${actual_balance}    Remove String    ${actual_balance}    K    ,    ${SPACE}

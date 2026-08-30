@@ -63,3 +63,8 @@ Get Response Content Of Api Request
     [Arguments]    ${p_api_response}
     ${content}    Set Variable    ${p_api_response.text}
     RETURN    ${content}
+    
+Convert Response Content Of Api To A Dictionary
+    [Arguments]    ${p_api_content_text}
+    ${dict}    Evaluate    json.loads('''${p_api_content_text}''')    modules=json
+    RETURN    ${dict}

@@ -1,8 +1,10 @@
 *** Settings ***
 Resource    ../../import.resource
-Resource    ../api-keywords/user-api-request.resource   
 Resource    ../page/page-account-promotion.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-header.resource
+Resource    ../page/page-account-info.resource
+Resource    ../../common/user-api-request.resource
 Library     ../../utils/utils-lib.py
 
 
@@ -10,20 +12,19 @@ Library     ../../utils/utils-lib.py
 
 *** Keywords ***
 Go To User Promotion Page
-    Go To    ${GL_LU88_URL}/account/promotion
+    Click On The Avatar Image On Header Page
+    Click On The Menu Khuyen Mai Cua Ban On The Account Info Page
     
 Assert User Promotion Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
-    ${json}    Convert String To Json    ${content_api_lsc}
-    ${code}    Get Value From Json    ${json}    $.code
-    ${code}    Set Variable    ${code}[0]
+    ${response}    Send GET Request To Get Promotion Of User    ${GL_LU88_GATEWAY_URL}    ${bearer_token}
+    ${dict}    Convert Response Content Of Api To A Dictionary    ${response}
+    ${code}    Get From Dictionary    ${dict}    code
     IF    ${code}==200
-        ${type}    Get Value From Json    ${json}    $.data.type
-        IF   '${type}[0]'=='COMMISSION'
+        ${type}    Get From Dictionary    ${dict['data']}    type
+        IF   '${type}'=='COMMISSION'
             Assert Promotion Commission Of User
-        ELSE IF    '${type}[0]'=='WELCOME'
+        ELSE IF    '${type}'=='WELCOME'
             Assert Promotion Welcome Of User
         END
     ELSE IF    ${code}==400
@@ -36,13 +37,12 @@ Assert User Promotion Page Show Correct
 
 Assert Promotion Commission Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Commission Detail Of User    ${bearer_token}
-    ${content_api_promotion_detail}    Get Content Of API User Promotion Commission Detail    ${response}
-    ${json}    Convert String To Json    ${content_api_promotion_detail}
-    ${expected_total_stake}    Get Value From Json    ${json}    $.data.stake
-    ${expected_total_stake}=    Evaluate    "{:,}".format($expected_total_stake[0])
-    ${expected_commission}    Get Value From Json    ${json}    $.data.commission
-    ${expected_commission}    Evaluate    round(${expected_commission}[0])
+    ${response}    Send GET Request To Get Promotion Commission Detail Of User    ${GL_LU88_GATEWAY_URL}    ${bearer_token}
+    ${dict}    Convert Response Content Of Api To A Dictionary    ${response}
+    ${expected_total_stake}    Get From Dictionary        ${dict['data']}    stake
+    ${expected_total_stake}=    Evaluate    "{:,}".format($expected_total_stake)
+    ${expected_commission}    Get From Dictionary    ${dict['data']}    commission
+    ${expected_commission}    Evaluate    round(${expected_commission})
     #${$expected_commission}=    Evaluate    "{:,}".format($expected_commission)
     ${actual_total_stake}    Get Value Of Total Stake On Promotion Page
     ${actual_total_cashback}    Get Value Of Total Commission Cashback On Promotion Page
@@ -55,15 +55,14 @@ Assert Promotion Commission Of User
 
 Assert Promotion Welcome Of User
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Promotion Of User    ${bearer_token}
-    ${content_api_promotion}    Get Content Of API User Promotion    ${response}
-    ${json}    Convert String To Json    ${content_api_promotion}
-    ${deposit_amount}    Get Value From Json    ${json}    $.data.deposit_amount
-    ${rolling}    Get Value From Json    ${json}    $.data.rolling
-    ${promotion_amount}    Get Value From Json    ${json}    $.data.promotion_amount
-    ${expected_deposit_amount}    Format With K    ${deposit_amount}[0]
-    ${expected_promotion_amount}    Format With K    ${promotion_amount}[0]
-    ${expected_rolling}    Format With K    ${rolling}[0]
+    ${response}    Send GET Request To Get Promotion Of User    ${GL_LU88_GATEWAY_URL}    ${bearer_token}
+    ${dict}    Convert Response Content Of Api To A Dictionary    ${response}
+    ${deposit_amount}    Get From Dictionary    ${dict['data']}    deposit_amount
+    ${rolling}    Get From Dictionary    ${dict['data']}    rolling
+    ${promotion_amount}    Get From Dictionary    ${dict['data']}    promotion_amount
+    ${expected_deposit_amount}    Format With K    ${deposit_amount}
+    ${expected_promotion_amount}    Format With K    ${promotion_amount}
+    ${expected_rolling}    Format With K    ${rolling}
     ${actual_so_tien_nap}    Get Value Of So Tien Da Nap Promtion 100% On Promotion Page
     ${actual_so_tien_thuong}    Get Value Of So Tien Thuong Promtion 100% On Promotion Page
     ${actual_so_tien_rolling}    Get Value Of So Tien Rolling Promtion 100% On Promotion Page

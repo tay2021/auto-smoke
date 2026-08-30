@@ -2,19 +2,19 @@
 Resource    ../../import.resource    
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-daily-gioithieu.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../page/page-daily-left-menu.resource
+Resource    ../../common/user-api-request.resource
 
 
 *** Keywords ***
 Go To Page Gioi Thieu Dai Ly
-    Go To    ${GL_LU88_DAILY_URL}campaign
+    Click On The Hamburge Menu On Left Menu Page
+    Click On The Menu Gioi Thieu On Left Menu Page
     
 Assert Gioi Thieu Page Correct
-    ${response}    Send GET Request To Get Profile User    ${GL_BEARER_TOKEN}
-    ${content_api_profile}    Get Content Of Api Profile     ${response}
-    ${json}    Convert String To Json    ${content_api_profile}
-    ${id}    Get Value From Json    ${json}    $.data.id
-    ${id}    Set Variable    ${id}[0]
+    ${response}    Send GET Request To Get Profile User    ${GL_LU88_GATEWAY_URL}    ${GL_BEARER_TOKEN}
+    ${dict}    Evaluate    json.loads('''${response}''')    modules=json
+    ${id}    Get From Dictionary    ${dict['data']}    id
     ${actual_link}=    Get Link Gioi Thieu On Gioi Thieu Page
     ${expected_link}=    Set Variable    ${GL_LU88_URL}?invite=${id}
     Should Be True    '${actual_link}'=='${expected_link}'

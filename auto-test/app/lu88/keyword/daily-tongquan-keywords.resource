@@ -9,17 +9,18 @@ Resource    ../api-keywords/daily-tongquan-api-request.resource
 Assert Tong Quan Dai Ly Trong Vong 30 Ngay Correct
     Click Span 30 Ngay On Tong Quan Page
     Wait For Load State    networkidle
+    Sleep    2s
     Assert Tong Quan Dai Ly    30
 
 Assert Tong Quan Dai Ly Trong Vong 7 Ngay Correct
     Click Span 7 Ngay On Tong Quan Page
     Wait For Load State    networkidle
+    Sleep    2s
     Assert Tong Quan Dai Ly    7
-
 
 Assert Tong Quan Dai Ly Hom Nay Correct
     Click Span Hom Nay On Tong Quan Page
-    Sleep    1s
+    Sleep    2s
     Assert Tong Quan Dai Ly    1
 
 
@@ -59,7 +60,6 @@ Assert Tong Quan Dai Ly
     Should Be True    ${actual_tong_new_memeber}==${expected_tong_user_new}
 
 
-
 Get Total Of Agent Today
     ${current_date}=    Get Current Date    result_format=%d-%m-%Y
     ${data}    Get Total Of Agent Via Api    ${current_date}    ${current_date}
@@ -68,20 +68,19 @@ Get Total Of Agent Today
 Get Total Of Agent Today Last 7 days
     ${current_date}=    Get Current Date    result_format=%d-%m-%Y
     ${prev_7_days}=    Get Current Date    result_format=%d-%m-%Y    increment=-7 days
-    ${data}    Get Total Of Agent Via Api    ${current_date}    ${prev_7_days}
+    ${data}    Get Total Of Agent Via Api    ${prev_7_days}    ${current_date}    
     RETURN    ${data}
     
 Get Total Of Agent Today Last 30 days
     ${current_date}=    Get Current Date    result_format=%d-%m-%Y
     ${prev_30_days}=    Get Current Date    result_format=%d-%m-%Y    increment=-30 days
-    ${data}    Get Total Of Agent Via Api    ${current_date}    ${prev_30_days}
+    ${data}    Get Total Of Agent Via Api    ${prev_30_days}    ${current_date}
     RETURN    ${data}
     
 Get Total Of Agent Via Api
     [Arguments]    ${p_from_date}    ${p_to_date}
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Total Agent   ${bearer_token}    ${p_from_date}    ${p_to_date}
-    ${content_api_bank}    Get Content Of Api Get Total Agent    ${response}
-    ${json}    Convert String To Json    ${content_api_bank}
-    ${data}    Get Value From Json    ${json}    $.data
-    RETURN    ${data}[0]
+    ${content}    Send GET Request To Get Total Agent   ${bearer_token}    ${p_from_date}    ${p_to_date}
+    ${dict}    Evaluate    json.loads('''${content}''')    modules=json
+    ${data}    Get From Dictionary    ${dict}    data
+    RETURN    ${data}

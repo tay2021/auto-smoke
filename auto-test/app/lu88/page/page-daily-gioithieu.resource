@@ -1,20 +1,15 @@
 *** Settings ***
-Resource    ../../import.resource
-
+Resource    ../../common/common-keywords.resource
 
 
 *** Keywords ***
 Get Link Gioi Thieu On Gioi Thieu Page
-    ${locator}    Set Variable    (//main//span[text()='Link giới thiệu'])[1]/following-sibling::div/span
-    Wait For Elements State    ${locator}    visible
-    ${value}    Get Text    ${locator}
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    //h6[text()='Link giới thiệu']/following-sibling::div[2]/div[1]/div[1]/div[1]/span
+    RETURN    ${text}
 
 Get Div Id Gioi Thieu On Gioi Thieu Page
-    ${locator}    Set Variable    (//span[text()='Mã giới thiệu'])[1]/following-sibling::div/span
-    Wait For Elements State    ${locator}    visible
-    ${value}    Get Text    ${locator}
-    RETURN    ${value}
+    ${text}    Wait For Element State And Get Text    //h6[text()='Link giới thiệu']/following-sibling::div[2]/div[1]/div[2]/div[1]/span
+    RETURN    ${text}
 
 
 

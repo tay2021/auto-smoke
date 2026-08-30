@@ -10,7 +10,7 @@ Test Teardown    Close Browser And Terminate Test Running
 
 *** Test Cases ***
 As a user I want to check Profile user correct
-    [Tags]    smoke    profile
+    [Tags]    smoke    profile    temp
     Open Lu88 Site And Maximize Window    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site LU88    ${VALID_USERNAME}    ${VALID_PASSWORD}

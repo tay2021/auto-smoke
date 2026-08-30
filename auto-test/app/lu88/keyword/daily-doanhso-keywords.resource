@@ -3,11 +3,14 @@ Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-daily-commission.resource
 Resource    ../api-keywords/daily-tongquan-api-request.resource
+Resource    ../page/page-daily-left-menu.resource
 
 
 *** Keywords ***
 Go To Page Doanh So Dai Ly
-    Go To    ${GL_LU88_DAILY_URL}commission
+    Click On The Hamburge Menu On Left Menu Page
+    Click On The Menu Doanh So On Left Menu Page
+
     
 Get Current From Date And To Date Selected By Default
     ${from_date}=    Get Default Selected From Date
@@ -36,23 +39,23 @@ Assert Doanh So From Date To Date Correct
     ${actual_phi_tong_nap}=    Remove Space And Char K Out Of String    ${actual_phi_tong_nap}
     
 
-    ${data}    Get Total Of Agent Via Api    ${p_from_date}    ${p_to_date}
-    ${expected_total_commission}    Get Value From Json    ${data}    $.total_commission
-    ${expected_total_commission}    Convert Thousand With Comma    ${expected_total_commission}[0]
-    ${expected_hoa_hong}    Get Value From Json    ${data}    $.agent_commission
-    ${expected_hoa_hong}    Convert Thousand With Comma    ${expected_hoa_hong}[0]
-    ${expected_stake}    Get Value From Json    ${data}    $.stake
-    ${expected_stake}    Convert Thousand With Comma    ${expected_stake}[0]
-    ${expected_winlost}    Get Value From Json    ${data}    $.winlost
-    ${expected_winlost}    Convert Thousand With Comma    ${expected_winlost}[0]
-    ${expected_return_commission}    Get Value From Json    ${data}    $.return_commission
-    ${expected_return_commission}    Convert Thousand With Comma    ${expected_return_commission}[0]
-    ${expected_invoice_promotion_real_amount}    Get Value From Json    ${data}    $.invoice_promotion_real_amount
-    ${expected_invoice_promotion_real_amount}    Convert Thousand With Comma    ${expected_invoice_promotion_real_amount}[0]
-    ${expected_invoice_payment_amount}    Get Value From Json    ${data}    $.invoice_payment_amount
-    ${expected_invoice_payment_amount}    Convert Thousand With Comma    ${expected_invoice_payment_amount}[0]
-    ${expected_invoice_payment_amount_fee}    Get Value From Json    ${data}    $.invoice_payment_amount_fee
-    ${expected_invoice_payment_amount_fee}    Convert Thousand With Comma    ${expected_invoice_payment_amount_fee}[0]
+    ${dict}    Get Total Of Agent Via Api    ${p_from_date}    ${p_to_date}
+    ${expected_total_commission}    Get From Dictionary    ${dict['data']}    total_commission
+    ${expected_total_commission}    Convert Thousand With Comma    ${expected_total_commission}
+    ${expected_hoa_hong}    Get From Dictionary    ${dict['data']}    agent_commission
+    ${expected_hoa_hong}    Convert Thousand With Comma    ${expected_hoa_hong}
+    ${expected_stake}    Get From Dictionary    ${dict['data']}    stake
+    ${expected_stake}    Convert Thousand With Comma    ${expected_stake}
+    ${expected_winlost}    Get From Dictionary    ${dict['data']}    winlost
+    ${expected_winlost}    Convert Thousand With Comma    ${expected_winlost}
+    ${expected_return_commission}    Get From Dictionary    ${dict['data']}    return_commission
+    ${expected_return_commission}    Convert Thousand With Comma    ${expected_return_commission}
+    ${expected_invoice_promotion_real_amount}    Get From Dictionary    ${dict['data']}    invoice_promotion_real_amount
+    ${expected_invoice_promotion_real_amount}    Convert Thousand With Comma    ${expected_invoice_promotion_real_amount}
+    ${expected_invoice_payment_amount}    Get From Dictionary    ${dict['data']}    invoice_payment_amount
+    ${expected_invoice_payment_amount}    Convert Thousand With Comma    ${expected_invoice_payment_amount}
+    ${expected_invoice_payment_amount_fee}    Get From Dictionary    ${dict['data']}    invoice_payment_amount_fee
+    ${expected_invoice_payment_amount_fee}    Convert Thousand With Comma    ${expected_invoice_payment_amount_fee}
 
     Should Be True    '${expected_total_commission}'=='${actual_lai_rong}'
     Should Be True    '${expected_hoa_hong}'=='${actual_hoa_hong}'
@@ -67,11 +70,6 @@ Assert Doanh So From Date To Date Correct
 Get Total Of Agent Via Api
     [Arguments]    ${p_from_date}    ${p_to_date}
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get Total Agent   ${bearer_token}    ${p_from_date}    ${p_to_date}
-    ${content_api_bank}    Get Content Of Api Get Total Agent    ${response}
-    ${json}    Convert String To Json    ${content_api_bank}
-    ${data}    Get Value From Json    ${json}    $.data
-    RETURN    ${data}[0]
-
-
-
+    ${content}    Send GET Request To Get Total Agent   ${bearer_token}    ${p_from_date}    ${p_to_date}
+    ${dict}    Evaluate    json.loads('''${content}''')    modules=json
+    RETURN    ${dict}

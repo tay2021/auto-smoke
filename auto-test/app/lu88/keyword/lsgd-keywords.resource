@@ -3,7 +3,9 @@ Resource    ../../import.resource
 Resource    ../page/page-header.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-lsgd.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../page/page-account-info.resource
+Resource    ../../common/common-api-keywords.resource
+Resource    ../../common/user-api-request.resource
 Library     ../../utils/utils-lib.py
 
 
@@ -11,15 +13,15 @@ Library     ../../utils/utils-lib.py
 
 *** Keywords ***
 Go to Lich Su Giao Gich Page
-    Go To    ${GL_LU88_URL}account/history-payment
+    Click On The Avatar Image On Header Page
+    Click On The Menu Giao Dich On The Account Info Page
     
 Assert LSGD Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get LSGD Of User   ${bearer_token}
-    ${content_api_lsgd}    Get Content Of API LSGD    ${response}
-    ${json}    Convert String To Json    ${content_api_lsgd}
-    ${item}    Get Value From Json    ${json}    $.data.items
-    ${count}    Get Length    ${item}[0]
+    ${response}    Send GET Request To Get LSGD Of User   ${GL_LU88_GATEWAY_URL}    ${bearer_token}
+    ${dict}    Convert Response Content Of Api To A Dictionary    ${response}
+    ${items}    Get From Dictionary     ${dict['data']}    items
+    ${count}    Get Length    ${items}
     IF    ${count}==0
         ${locator}    Get Locator Lich Su Giao Dich Trong On LSGD Page
         ${exist}    Check Element Exists On Page    ${locator}
@@ -28,7 +30,7 @@ Assert LSGD Page Show Correct
         ${exist}    Check Element Exists On Page    ${locator}
         Should Be True    ${exist}
     ELSE
-        ${arr_lsgd}    Set Variable    ${item}[0]
+        ${arr_lsgd}    Set Variable    ${items}
         # nếu tổng số lsgd > 3 thì chỉ chech chi tiết 3 record đầu thôi.
         IF    ${count}>3
             ${arr_lsgd}    Get Slice From List    ${arr_lsgd}    0    3
@@ -49,7 +51,12 @@ Assert Detail Of A Transaction In Detail LSGD Page
         ${expected_amount}    Format With K    ${expected_amount}
         ${expected_time}    Reformat To Utc7    ${expected_time}
         IF    '${expected_action}'=='DEPOSIT'
-            ${expected_action}    Set Variable    Nạp tiền
+            ${type}=    Get From Dictionary    ${item}    type
+            IF    '${type}'=='PAYMENT'
+                ${expected_action}    Set Variable    Nạp tiền
+            ELSE
+                ${expected_action}    Set Variable    Khuyến mãi
+            END
         ELSE IF    '${expected_action}'=='WITHDRAW'
             ${expected_action}    Set Variable    Rút tiền
         END

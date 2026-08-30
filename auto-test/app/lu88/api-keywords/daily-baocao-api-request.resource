@@ -1,7 +1,7 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-api-keywords.resource
 Resource    ../../variable.resource
+Resource    ../lu88-variable.resource
 
 
 *** Keywords ***
@@ -12,11 +12,7 @@ Send GET Request To Get Bao Cao Quan Ly Hoi Vien
     ${p_from_date}=    Evaluate    __import__('datetime').datetime.strptime("${p_from_date}", "%d-%m-%Y").strftime("%Y-%m-%d")
     ${p_to_date}=    Evaluate    __import__('datetime').datetime.strptime("${p_to_date}", "%d-%m-%Y").strftime("%Y-%m-%d")
     ${response}    Send Api Request To Server    GET    ${GL_LU88_GATEWAY_URL}    ${URI_DAILY_DIRECT_AGENT}?from_date=${p_from_date}&to_date=${p_to_date}&page=1&limit=10&sort=created_time&reserve=true    ${headers}
-    RETURN    ${response}
-
-Get Content Of Api Get Bao Cao Quan Ly Hoi Vien
-    [Arguments]    ${p_api_response}
-    ${content}    Get Response Content Of Api Request    ${p_api_response}
+    ${content}    Get Response Content Of Api Request    ${response}
     RETURN    ${content}
 
 Send GET Request To Get Bao Cao Quan Ly Dai Ly
@@ -26,11 +22,7 @@ Send GET Request To Get Bao Cao Quan Ly Dai Ly
     ${p_from_date}=    Evaluate    __import__('datetime').datetime.strptime("${p_from_date}", "%d-%m-%Y").strftime("%Y-%m-%d")
     ${p_to_date}=    Evaluate    __import__('datetime').datetime.strptime("${p_to_date}", "%d-%m-%Y").strftime("%Y-%m-%d")
     ${response}    Send Api Request To Server    GET    ${GL_LU88_GATEWAY_URL}    ${URI_DAILY_SUB_AGENT}?from_date=${p_from_date}&to_date=${p_to_date}&page=1&limit=10&sort=created_time&reserve=true    ${headers}
-    RETURN    ${response}
-
-Get Content Of Api Get Bao Cao Quan Ly Dai Ly
-    [Arguments]    ${p_api_response}
-    ${content}    Get Response Content Of Api Request    ${p_api_response}
+    ${content}    Get Response Content Of Api Request    ${response}
     RETURN    ${content}
 
 Send GET Request To Get Bao Cao Quan Ly Bet Game Theo Category
@@ -40,9 +32,5 @@ Send GET Request To Get Bao Cao Quan Ly Bet Game Theo Category
     ${p_from_date}=    Evaluate    __import__('datetime').datetime.strptime("${p_from_date}", "%d-%m-%Y").strftime("%Y-%m-%d")
     ${p_to_date}=    Evaluate    __import__('datetime').datetime.strptime("${p_to_date}", "%d-%m-%Y").strftime("%Y-%m-%d")
     ${response}    Send Api Request To Server    GET    ${GL_LU88_GATEWAY_URL}    ${URI_DAILY_BET-BY-CATEGORY}?from_date=${p_from_date}&to_date=${p_to_date}&page=1&limit=10&sort=created_time&reserve=true    ${headers}
-    RETURN    ${response}
-
-Get Content Of Api Get Bao Cao Quan Ly Bet Game Theo Category
-    [Arguments]    ${p_api_response}
-    ${content}    Get Response Content Of Api Request    ${p_api_response}
+    ${content}    Get Response Content Of Api Request    ${response}
     RETURN    ${content}

@@ -65,6 +65,7 @@ Check Element Exists On Page
     END
 
 Get And Set Bearer Token From Cookie After Login Successfully
+    Sleep    1s
     ${dict_token}    Get Cookie    token
     ${bearer_token}    Get From Dictionary    ${dict_token}    value
     Set Global Variable    ${GL_BEARER_TOKEN}    ${bearer_token}
