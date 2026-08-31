@@ -29,7 +29,7 @@ As a user I want to withdraw with existing rolling correct
     Assert Withdraw Correct
     
 As a user I can withdraw by mobi card successfully
-    [Tags]    smoke    withdraw-mobi-card    temp
+    [Tags]    smoke    withdraw-mobi-card
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${USERNAME_WITHDRAW_CARD}    ${VALID_PASSWORD}

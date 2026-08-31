@@ -45,15 +45,17 @@ Assert Available Crypto Currency Show Correct
     Sleep    1s
     FOR    ${item}    IN    @{p_data}
         ${currency}    Get From Dictionary    ${item}    currency
-        ${price}    Get From Dictionary    ${item}    price
-        ${expected_buyPrice}    Get From Dictionary    ${price}[1]    buyPrice
-        ${networks}    Get From Dictionary    ${item}    networks
-        FOR    ${network}    IN    @{networks}
-            Log    ${currency}-${network}
-            ${actual_price}    Get Buy Price Base On Currency And Network On Deposit Crypto Page    ${currency}    ${network}
-            ${actual_price}    Remove String    ${actual_price}    =    ,    ${SPACE}    VNĐ
-            Should Be True    '${expected_buyPrice}'=='${actual_price}'
-        END
+        IF     '${currency}'!='USDC'    #bo qua usdc, vi no nam o duoi ko trong viewport
+            ${price}    Get From Dictionary    ${item}    price
+            ${expected_buyPrice}    Get From Dictionary    ${price}[1]    buyPrice
+            ${networks}    Get From Dictionary    ${item}    networks
+            FOR    ${network}    IN    @{networks}
+                Log    ${currency}-${network}
+                ${actual_price}    Get Buy Price Base On Currency And Network On Deposit Crypto Page    ${currency}    ${network}
+                ${actual_price}    Remove String    ${actual_price}    =    ,    ${SPACE}    VNĐ
+                Should Be True    '${expected_buyPrice}'=='${actual_price}'
+            END
+        END      
     END
 
 Assert Crypto Network Addresses are correct
