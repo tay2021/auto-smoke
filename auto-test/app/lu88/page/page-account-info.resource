@@ -27,3 +27,6 @@ Click On The Menu Thanh Vien VIP On The Account Info Page
 
 Click On The Menu Rut Tien On The Account Info Page
     Wait For Element State And Click On It    //main[@class='main-content']/div[1]/div[1]/div[2]/div[2]//a[text()='Rút tiền']
+
+Click On The Menu Giao Dich On The Account Info Page
+    Wait For Element State And Click On It    //main[@class='main-content']/div[1]/div[1]/div[2]/div[2]//a[text()='Giao dịch']
