@@ -28,7 +28,7 @@ As a user I want to check available network crypto deposit correct
     Assert Available Crypto Networks are correct
 
 As a user I want to check address deposit network is correct
-    [Tags]    smoke    deposit-crypto-address    temp
+    [Tags]    smoke    deposit-crypto-address    
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${USERNAME_DAILY}    ${VALID_PASSWORD}
@@ -63,13 +63,13 @@ As a user I want to deposit by the cao correct
     Assert Create Phieu Nap By The Cao Correct    ${nha_mang}    ${serial}    ${pin}    ${menh_gia}
     
 As a user I want to deposit by flash pay correct
-    [Tags]    smoke    deposit-flash
+    [Tags]    smoke    deposit-flash    temp
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${USERNAME_DAILY}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully
     Get And Set Bearer Token From Cookie After Login Successfully
     Go To Deposit Page
-    Go To Deposit Flash Page
-    ${amount}    Set Variable    200
+    #Go To Deposit Flash Page
+    ${amount}    Set Variable    400
     Assert Create Phieu Nap By Flash Pay Correct    ${amount}
