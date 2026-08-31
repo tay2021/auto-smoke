@@ -18,7 +18,7 @@ As a user I want to deposit by crypto correct
     Assert Create Phieu Nap By Crypto Correct
 
 As a user I want to check available network crypto deposit correct
-    [Tags]    smoke    deposit-crypto-price    temp
+    [Tags]    smoke    deposit-crypto-price    
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${USERNAME_DAILY}    ${VALID_PASSWORD}
@@ -28,7 +28,7 @@ As a user I want to check available network crypto deposit correct
     Assert Available Crypto Networks are correct
 
 As a user I want to check address deposit network is correct
-    [Tags]    smoke    deposit-crypto-address
+    [Tags]    smoke    deposit-crypto-address    temp
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${USERNAME_DAILY}    ${VALID_PASSWORD}

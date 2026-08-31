@@ -67,15 +67,18 @@ Assert Crypto Network Addresses are correct
     FOR    ${item}    IN    @{data}
         ${currency}    Get From Dictionary    ${item}    currency
         ${networks}    Get From Dictionary    ${item}    networks
-        FOR    ${network}    IN    @{networks}
-            Log    ${currency}-${network}
-            Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
-            ${expected_address}    Get Address Base On Network    ${network}
-            Select Currency And NetWork On Deposit Crypto Page    ${currency}    ${network}
-            Sleep    0.5s
-            ${actual_address}    Get Text Of Span Address On Deposit Crypto Page
-            Should Be True    "${expected_address}"=="${actual_address}"
-        END
+
+        IF    '${currency}'!='USDC'    #ko tinh usdc , do khong nam trong view
+            FOR    ${network}    IN    @{networks}
+                Log    ${currency}-${network}
+                Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
+                ${expected_address}    Get Address Base On Network    ${network}
+                Select Currency And NetWork On Deposit Crypto Page    ${currency}    ${network}
+                Sleep    0.5s
+                ${actual_address}    Get Text Of Span Address On Deposit Crypto Page
+                Should Be True    "${expected_address}"=="${actual_address}"
+            END
+        END      
     END
 
 Get Address Base On Network
