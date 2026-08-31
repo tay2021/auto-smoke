@@ -45,4 +45,4 @@ Click On The Button Rut Tien On The Withdraw Mobi Page
     Wait For Element State And Click On It    //span[text()='Thông tin thẻ cào']/ancestor::form/div[2]/button
 
 Get Element Rut Tien Thanh Cong Qua The Cao On The Withdraw Mobi Page
-    RETURN    //span[text()='RÚT TIỀN THÀNH CÔNG']
+    RETURN    //*[contains(text(),'Yêu cầu rút tiền thành công!')]

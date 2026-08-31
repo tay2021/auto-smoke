@@ -6,8 +6,8 @@ Test Teardown    Close Browser And Terminate Test Running
 
 
 *** Test Cases ***
-As a user I want to check Login to site Lu88 Dai ly successfully
-    [Tags]    smoke    register    temp
+As a user I want to check Register An account to site Lu88 successfully
+    [Tags]    smoke    register
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Open Register Form    ${GL_LU88_URL}/?i=tester&popup=register
