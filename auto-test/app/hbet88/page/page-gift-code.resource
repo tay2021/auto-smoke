@@ -1,26 +1,17 @@
 *** Settings ***
-Resource    ../../import.resource
-
-
-*** Variables ***
-
+Resource    ../../common/common-keywords.resource
 
 *** Keywords ***
 Get Locator Label Tille Gift Code On Gift Code Page
-    ${locator}    Set Variable    //header[contains(@class,'items-center')]/preceding-sibling::div/span[text()='Gift code']
-    RETURN    ${locator}
+    RETURN    //header[contains(@class,'items-center')]/preceding-sibling::div/span[text()='Gift code']
 
 Input Ma Gift Code On Textbox Gift Code On Gift Code Page
     [Arguments]    ${p_giftcode}
-    ${locator}    Set Variable    (//section//form)[2]//input[@id='code']
-    Wait For Elements State    ${locator}    visible
-    Fill Text    ${locator}    ${p_giftcode}
+    Wait For Element State And Fill Text    (//input[contains(@placeholder,'VD:')])[1]    ${p_giftcode}
 
 Click Button Nhan Qua Ngay On Gift Code Page
-    ${locator}    Set Variable    (//section//form)[2]//button[text()='Nhận quà ngay']
-    Wait For Elements State    ${locator}    visible
-    Click    ${locator}
+    Click    (//button[text()='Nhận quà ngay'])[1]
 
 Get Text Error Infor On Gift Code Page
-    ${value}    Get Text    (//section//form)[2]//div[@class='ant-form-item-explain-error']
+    ${value}    Wait For Element State And Get Text    (//div[@class='ant-form-item-explain-error'])[1]
     RETURN    ${value}

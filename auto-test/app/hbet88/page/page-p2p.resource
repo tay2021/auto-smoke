@@ -3,10 +3,6 @@ Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 
 
-*** Variables ***
-
-
-
 *** Keywords ***
 Close Pop up Chao Mung Den Voi P2p
     ${locator}    Set Variable    //iframe[contains(@src,'buy')] >>> //*[text()='Chào mừng đến với P2P']

@@ -27,5 +27,5 @@ Click Button Dang Nhap On Model Login
     Click    ${btn_dangnhap}
 
 Get Label Info Login Successfully
-    ${locator}    Get Element    ${lbel_LoginSuccessfully}
+    ${locator}    Set Variable    //*[text()='Đăng nhập thành công!']
     RETURN    ${locator}

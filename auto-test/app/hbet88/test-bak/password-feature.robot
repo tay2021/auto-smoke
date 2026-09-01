@@ -8,9 +8,9 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check change password correct
     [Tags]    smoke    password
-    Open Hbet Site On Device    ${GL_HBET_URL}    
+    Open Hbet Site On Device    ${GL_HBET_URL}
     Close Welcome Pop Up If Shown
-    Login To Site Hbet    ${USERNAME_BANK_CC}    ${VALID_PASSWORD}
+    Login To Site Hbet    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site Successfully
     Go To Change Password Page
     ${cur_pass}=    Set Variable    ${VALID_PASSWORD}

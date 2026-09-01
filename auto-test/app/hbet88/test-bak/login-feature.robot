@@ -1,8 +1,9 @@
 *** Settings ***
 Resource    ../keyword/login-keywords.resource
 Resource    ../hbet-variable.resource
-
 Test Teardown    Close Browser And Terminate Test Running
+
+
 
 *** Test Cases ***
 As a user I want to check Login to site Hbet successfully

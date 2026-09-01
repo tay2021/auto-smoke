@@ -8,20 +8,9 @@ Test Teardown    Close Browser And Terminate Test Running
 *** Test Cases ***
 As a user I want to check P2p transaction correct
     [Tags]    smoke    p2p
-    Open Hbet Site And Maximize Window    ${GL_HBET_URL}
+    Open Hbet Site On Device    ${GL_HBET_URL}
     Close Welcome Pop Up If Shown
     Login To Site Hbet    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Assert Login To Site Successfully
     Go To Giao Dich P2p Page
     Assert Page Giao Dich P2p Show Correct
-
-
-
-
-
-
-
-    
-
-
-    
