@@ -28,7 +28,7 @@ As a user I want to check available network crypto deposit correct
     Assert Available Crypto Networks are correct
     
 As a user I want to check address deposit network is correct
-    [Tags]    smoke    deposit-crypto-address    temp
+    [Tags]    smoke    deposit-crypto-address
     Open 123Bong Site On Device    ${GL_123BONG_URL}
     Close Welcome Pop Up If Shown
     Login To Site 123Bong    ${USERNAME_VALID}    ${VALID_PASSWORD}
