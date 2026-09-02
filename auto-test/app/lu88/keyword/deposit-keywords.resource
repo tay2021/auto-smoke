@@ -68,7 +68,7 @@ Assert Crypto Network Addresses are correct
         ${currency}    Get From Dictionary    ${item}    currency
         ${networks}    Get From Dictionary    ${item}    networks
 
-        IF    '${currency}'!='USDC'    #ko tinh usdc , do khong nam trong view
+        IF    '${currency}'=='ETH' or '${currency}'=='BNB'     #ko tinh usdc , do khong nam trong view
             FOR    ${network}    IN    @{networks}
                 Log    ${currency}-${network}
                 Click On Dropdownlist Select Crypto Currency On Deposit Crypto Page
