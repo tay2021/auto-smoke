@@ -63,7 +63,7 @@ As a user I want to deposit by the cao correct
     Assert Create Phieu Nap By The Cao Correct    ${nha_mang}    ${serial}    ${pin}    ${menh_gia}
     
 As a user I want to deposit by flash pay correct
-    [Tags]    smoke    deposit-flash    temp
+    [Tags]    smoke    deposit-flash
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
     Login To Site Lu88    ${USERNAME_DAILY}    ${VALID_PASSWORD}

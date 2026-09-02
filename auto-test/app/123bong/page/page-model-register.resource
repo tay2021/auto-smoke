@@ -1,26 +1,19 @@
 *** Settings ***
-Resource    ../../import.resource
+Resource    ../../common/common-keywords.resource
 
 *** Keywords ***
 Input Username On Model Register
     [Arguments]    ${p_username}
-    ${locator}    Set Variable    //input[@id='username-register-input']
-    Wait For Elements State    ${locator}    visible
-    Fill Text    ${locator}    ${p_username}
+    Wait For Element State And Fill Text    //input[@id='username-register-input']    ${p_username}
+
 
 Input Password On Model Register
     [Arguments]    ${p_password}
-    ${locator}    Set Variable    //input[@id='password-register-input']
-    Wait For Elements State    ${locator}    visible
-    Fill Text    ${locator}    ${p_password}
+    Wait For Element State And Fill Text    //input[@id='password-register-input']    ${p_password}
 
 Input Phone Number On Model Register
     [Arguments]    ${p_phone_number}
-    ${locator}    Set Variable    //input[@placeholder='Số điện thoại']
-    Wait For Elements State    ${locator}    visible
-    Fill Text    ${locator}    ${p_phone_number}
+    Wait For Element State And Fill Text    //input[@placeholder='Số điện thoại']    ${p_phone_number}
 
 Click Button Register On Model Register
-    ${locator}    Set Variable    //a[text()='Điều khoản sử dụng']/../../../following-sibling::div[2] //button[text()='Đăng ký']
-    Wait For Elements State    ${locator}    visible
-    Click    ${locator}
+    Wait For Element State And Click On It    //a[text()='Điều khoản sử dụng']/../../../following-sibling::div[2] //button[text()='Đăng ký']

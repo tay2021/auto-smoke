@@ -7,15 +7,13 @@ Resource    ../keyword/lsc-keywords.resource
 Test Teardown    Close Browser And Terminate Test Running
 
 
-
 *** Test Cases ***
 As a user I want to check Lich Su Cuoc Show Correct
     [Tags]    smoke    lsc
-    Open 123Bong Site And Maximize Window    ${GL_123BONG_URL}
+    Open 123Bong Site On Device    ${GL_123BONG_URL}
     Close Welcome Pop Up If Shown
-    Login To Site 123Bong    ${VALID_USERNAME}    ${VALID_PASSWORD}
+    Login To Site 123Bong    ${USERNAME_VALID}    ${VALID_PASSWORD}
     Assert Login To Site 123Bong Successfully
     Get And Set Bearer Token From Cookie After Login Successfully
     Go To Lich Su Cuoc Page
     Assert Lich Su Cuoc Page Show Correct
-

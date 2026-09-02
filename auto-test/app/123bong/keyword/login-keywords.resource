@@ -1,5 +1,4 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
 Resource    ../page/page-welcome-pop-up.resource
 Resource    ../page/page-model-login.resource
@@ -9,6 +8,11 @@ Resource    ../page/page-model-register.resource
 
 
 *** Keywords ***
+Open 123Bong site on device
+    [Arguments]    ${p_url}    ${p_device_type}=iPhone 17 Pro Max
+    Open Site On Device    ${p_url}    ${p_device_type}
+
+
 Open 123bong site and maximize window
     [Arguments]    ${p_url}
     Open Site and maximize window    ${p_url}
@@ -34,7 +38,6 @@ Assert Login To Site 123Bong Successfully
     Should Be True    ${exits}
 
 
-
 Open Register Form
     [Arguments]    ${p_url_form_register}
     Go to    ${p_url_form_register}
@@ -49,4 +52,3 @@ Register An 123Bong Account
 Assert Register An Account Successfully
     ${exist}    Check Element Exists On Page    //*[contains(text(),'Đăng ký thành công')]
     Should Be True    ${exist}
-

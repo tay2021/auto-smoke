@@ -1,16 +1,18 @@
 *** Settings ***
-Resource    ../../import.resource
 Resource    ../page/page-change-password.resource
 Resource    ../../common/common-keywords.resource
+Resource    ../page/page-account-info.resource
+Resource    ../page/page-profile-information.resource
+Resource    ../page/page-header.resource
 
 
 
 
 *** Keywords ***
 Go to Change Password Page
-    Go To    ${GL_123BONG_URL}account/profile
-    Wait For Elements State    //span[text()='Thay đổi']    visible
-    Click    //span[text()='Thay đổi']
+    Click On The Avatar Image On Header Page
+    Click On The Card Account Info On The Account Info Page
+    Click On The Button Thay Doi Mat Khau On Profile Page
     
     
 Change Password User

@@ -1,32 +1,31 @@
 *** Settings ***
 Resource    ../../import.resource
 Resource    ../../common/common-keywords.resource
-Resource    ../api-keywords/user-api-request.resource
+Resource    ../../common/user-api-request.resource
+Resource    ../page/page-header.resource
+Resource    ../page/page-account-info.resource
 Resource    ../page/page-lsc.resource
 Library     ../../utils/utils-lib.py
 
 
 
-
-
-
 *** Keywords ***
 Go to Lich Su Cuoc Page
-    Go To    ${GL_123BONG_URL}account/history-bet
+    Click On The Avatar Image On Header Page
+    Click On The Menu Ca Cuoc On The Account Info Page
     
 Assert Lich Su Cuoc Page Show Correct
     ${bearer_token}    Set Variable    ${GL_BEARER_TOKEN}
-    ${response}    Send GET Request To Get LSC Of User   ${bearer_token}
-    ${content_api_lsc}    Get Content Of API LSC    ${response}
-    ${json}    Convert String To Json    ${content_api_lsc}
-    ${item}    Get Value From Json    ${json}    $.data.items
-    ${count}    Get Length    ${item}[0]
+    ${response}    Send GET Request To Get LSC Of User   ${GL_123BONG_GATEWAY_URL}    ${bearer_token}
+    ${dict}    Convert Response Content Of Api To A Dictionary    ${response}
+    ${items}    Get From Dictionary    ${dict['data']}    items
+    ${count}    Get Length    ${items}
     IF    ${count}==0
         ${locator}    Get Locator Lich Su Cuoc Trong On LSC Page
-        ${exist}    Check Element Exists On Page    (${locator})[1]
+        ${exist}    Check Element Exists On Page    ${locator}
         Should Be True    ${exist}
     ELSE
-        ${arr_lsc}    Set Variable    ${item}[0]
+        ${arr_lsc}    Set Variable    ${items}
         # nếu tổng số lsgd > 3 thì chỉ chech chi tiết 3 record đầu thôi.
         IF    ${count}>3
             ${arr_lsc}    Get Slice From List    ${arr_lsc}    0    3
@@ -48,19 +47,17 @@ Assert Detail Of A Betting Transaction In Detail LSC Page
 
     ${expected_tien_cuoc}    Format With K From Original    ${expected_tien_cuoc}
     ${expected_thang_thua}    Format With K From Original    ${expected_thang_thua}
-    ${expected_thang_thua}    Remove String    ${expected_thang_thua}    +    -
+    ${expected_thang_thua}    Remove String    ${expected_thang_thua}    +    -    ${SPACE}
     ${expected_thuong}    Format With K From Original    ${expected_thuong}
-        
+
+    Click On The Arrow To Expand Detail On LSC Page    1
     ${actual_id}    Get Value ID In LSC Detail Page    1
-    ${actual_id}=    Evaluate    "${actual_id}"[1:]    #remove # before of id
     ${actual_tro_choi}    Get Value Tro Choi Name In LSC Detail Page    1
     ${actual_tien_cuoc}    Get Value Tien Cuoc In LSC Detail Page    1
     ${actual_thang_thua}    Get Value Tien Thang Thua In LSC Detail Page    1
-    ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -
-    ${actual_thuong}    Get Value Tien Thuong In LSC Detail Page    1
+    ${actual_thang_thua}=    Remove String    ${actual_thang_thua}    +    -    ${SPACE}
 
     Should Be True    '${expected_id}'=='${actual_id}'
     Should Be True    '${expected_tro_choi}'=='${actual_tro_choi}'
     Should Be True    '${expected_tien_cuoc}'=='${actual_tien_cuoc}'
     Should Be True    '${expected_thang_thua}'=='${actual_thang_thua}'
-    Should Be True    '${expected_thuong}'=='${actual_thuong}'

@@ -71,7 +71,6 @@ Get And Set Bearer Token From Cookie After Login Successfully
     Set Global Variable    ${GL_BEARER_TOKEN}    ${bearer_token}
     RETURN    ${bearer_token}
 
-
 Close Browser And Terminate test running
     Run Keywords    Close Browser
     
