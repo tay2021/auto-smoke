@@ -2,9 +2,6 @@
 Resource    ../../common/common-keywords.resource
 
 
-*** Variables ***
-${pre_fix_table_bank}    //div[@class='root-account-content-wrapper']//div[text()='Quản lý ngân hàng']/../following::div[1]/div[3]
-
 
 *** Keywords ***
 Get Span Lien Ket Ngan Hang On Quan Ly Bank Page
@@ -13,15 +10,15 @@ Get Span Lien Ket Ngan Hang On Quan Ly Bank Page
 
 Get Value Of Ten Tai Khoan On Quan Ly Bank Page
     [Arguments]    ${p_index}
-    ${text}    Wait For Element State And Get Text    ${pre_fix_table_bank}/div[${p_index}]//span[text()='Tên tài khoản']/following-sibling::span
+    ${text}    Wait For Element State And Get Text    //div[@class='relative block w-full md:hidden']/div[2]/div[3]/div[${p_index}]//span[text()='Tên tài khoản']/../span[2]
     RETURN    ${text}
 
 Get Value Of So Tai Khoan On Quan Ly Bank Page
     [Arguments]    ${p_index}
-    ${text}    Wait For Element State And Get Text    ${pre_fix_table_bank}/div[${p_index}]//span[text()='Số tài khoản']/following-sibling::span
+    ${text}    Wait For Element State And Get Text    //div[@class='relative block w-full md:hidden']/div[2]/div[3]/div[${p_index}]//span[text()='Số tài khoản']/../span[2]
     RETURN    ${text}
 
 Get Value Of Trang Thai On Quan Ly Bank Page
     [Arguments]    ${p_index}
-    ${text}    Wait For Element State And Get Text    ${pre_fix_table_bank}/div[${p_index}]/div[1]/div[1]/div[1]/div[2]
+    ${text}    Wait For Element State And Get Text    //div[@class='relative block w-full md:hidden']/div[2]/div[3]/div[${p_index}]//img/../div[1]/div[2]/div[1]
     RETURN    ${text}

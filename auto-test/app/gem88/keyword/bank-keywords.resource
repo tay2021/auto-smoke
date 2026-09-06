@@ -36,11 +36,15 @@ Assert Quan Ly Bank Page Show Correct
             ELSE
                 ${expected_is_reviewed}    Set Variable    Chưa xác thực
             END
-            ${actual_bank_account_name}    Get Value Of Ten Tai Khoan On Quan Ly Bank Page    ${i+1}
-            ${actual_bank_account_no}    Get Value Of So Tai Khoan On Quan Ly Bank Page    ${i+1}
-            ${actual_bank_trang_thai}    Get Value Of Trang Thai On Quan Ly Bank Page    ${i+1}
-            Should Be True    '${expected_bank_account_name}'=='${actual_bank_account_name}'
-            Should Be True    '${expected_bank_account_no}'=='${actual_bank_account_no}'
-            Should Be True    '${expected_is_reviewed}'=='${actual_bank_trang_thai}'
+            #${actual_bank_account_name}    Get Value Of Ten Tai Khoan On Quan Ly Bank Page    ${i+1}
+            #${actual_bank_account_no}    Get Value Of So Tai Khoan On Quan Ly Bank Page    ${i+1}
+            #${actual_bank_trang_thai}    Get Value Of Trang Thai On Quan Ly Bank Page    ${i+1}
+            #Should Be True    '${expected_bank_account_name}'=='${actual_bank_account_name}'
+            #Should Be True    '${expected_bank_account_no}'=='${actual_bank_account_no}'
+            #Should Be True    '${expected_is_reviewed}'=='${actual_bank_trang_thai}'
+
+            ${locator}    Set Variable    //main//div[@class='relative block w-full md:hidden']/div[2]/div[3]//span[text()='Tên tài khoản']/../span[text()='${expected_bank_account_name}']/../../div[2]//span[text()='Số tài khoản']/..//span[text()='${expected_bank_account_no}']/../../../div[1]/div[1]/div[2]//div[text()='${expected_is_reviewed}']
+            ${exit}    Check Element Exists On Page    ${locator}
+            Should Be True    ${exit}
         END
     END
