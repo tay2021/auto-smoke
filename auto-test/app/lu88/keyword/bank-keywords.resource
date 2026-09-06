@@ -31,10 +31,19 @@ Assert Quan Ly Bank Page Show Correct
         FOR    ${i}    IN RANGE    ${count}
             ${expected_bank_account_name}    Get From Dictionary    ${data}[${i}]    bank_account_name
             ${expected_bank_account_no}    Get From Dictionary    ${data}[${i}]    bank_account_no
-            ${locator}    Set Variable    //section//div[text()='${expected_bank_account_no}']/following-sibling::div[text()='${expected_bank_account_name}']
-            ${exist}    Check Element Exists On Page    ${locator}
-            Should Be True    ${exist}
+            ${is_rejected}    Get From Dictionary    ${data}[${i}]    is_rejected
+            ${is_reviewed}    Get From Dictionary    ${data}[${i}]    is_reviewed
 
+            IF    ${is_reviewed}
+                IF    ${is_rejected}
+                    ${locator}    Set Variable    //section//div[text()='${expected_bank_account_no}']/following-sibling::div[text()='${expected_bank_account_name}']/preceding-sibling::span/div[text()='Thất bại']
+                ELSE
+                    ${locator}    Set Variable    //section//div[text()='${expected_bank_account_no}']/following-sibling::div[text()='${expected_bank_account_name}']
+                END
+            ELSE
+                ${locator}    Set Variable    //section//div[text()='${expected_bank_account_no}']/following-sibling::div[text()='${expected_bank_account_name}']/preceding-sibling::span/div[text()='Đang xử lý']
+            END
+            ${exits}    Check Element Exists On Page    ${locator}
+            Should Be True    ${exits}
         END
-        
     END
