@@ -12,5 +12,5 @@ As a user I want to check Login to site Lu88 successfully
     [Tags]    smoke    login
     Open Lu88 Site On Device    ${GL_LU88_URL}
     Close Welcome Pop Up If Shown
-    Login To Site Lu88    ${USERNAME_DAILY}    ${VALID_PASSWORD}
+    Login To Site Lu88    ${USERNAME_COMMISSION}    ${VALID_PASSWORD}
     Assert Login To Site88 Successfully
